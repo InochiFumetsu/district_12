@@ -1,10 +1,6 @@
 # district_12
 ECOR1042_Lab1B_Course_Project
 
-# Lab 2
-    •	Read/make sense of course project overview
-    •	Write/submit project report
-
 # Lab 3 “LOAD DATA MODULE” <Text Processing / Dicts / Lists>
     •	Read .csv file into data structure
     •	“Text Processing”? -> create a dictionary and fill it with student data
