@@ -1,1 +1,9 @@
 #CODEOWNERS file sets permissions for side-branches
+
+#district_12:
+#  @InochiFumetsu  <spencer hiscox>
+#
+#
+#
+
+*/.github/ @InochiFumetsu
