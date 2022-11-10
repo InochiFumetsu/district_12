@@ -4,10 +4,3 @@
 import importlib as imp               # Spencer: I am not sure of the syntax they will teach us for this in class (don't know if this is how they'll want us to do it)
 imp.import_module(load_data_12)       #          I'm just including it to kind of show what I *THINK* they're going to have us do for the 2 "modules" we have to write.
 imp.import_module(sort_plot_12)
-
-test_branch_2_m>s_merge
-# aaaand here we're changing the slave file to check GitHub response to master >>>>>>> slave PR.
-=======
-# Making master out of date a second time to test first PR as master >>>>>>> slave merge to see if "resolve conflicts" works in this direction with no previous merge 
-# requests open between the two branches.
-master
