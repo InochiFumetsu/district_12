@@ -1,5 +1,7 @@
 #STUDENT FAILURES DICTIONARY FILE
 
+#AUTHOR: <YOUR-NAME-HERE>
+
 """
 The keys of the dictionary are the number of past failures the students have had.
 The function assumes that past failures range from 0 to 10.
