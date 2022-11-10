@@ -4,3 +4,5 @@
 #   Jack Roberts
 #   Esteban Heidrich
 #   Milan Djordjevic
+
+def add_average():
