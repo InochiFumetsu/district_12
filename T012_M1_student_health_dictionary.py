@@ -1,5 +1,7 @@
 #STUDENT HEALTH DICTIONARY FILE
 
+#AUTHOR: <YOUR-NAME-HERE>
+
 """
 The keys of the dictionary are the students' health numbers.
 A student's health range is from 1 (meaning very bad) to 5 (meaning very good).
