@@ -1,5 +1,7 @@
 #STUDENT SCHOOL DICTIONARY FILE
 
+#AUTHOR: <YOUR-NAME-HERE>
+
 """
 The keys of the dictionary are the initials of the schools the students attended.
 The function assumes that only the schools listed in the data set provided (student-mat.csv) exist for the keys.
