@@ -1,5 +1,7 @@
 #STUDENT AGE DICTIONARY FILE
 
+#AUTHOR: <YOUR-NAME-HERE>
+
 """
 The keys of the dictionary are the students' ages.
 A student's age range is from 15 to 22.
