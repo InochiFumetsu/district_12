@@ -1,12 +1,13 @@
 #CODEOWNERS file sets permissions for side-branches
 
 #district_12:
-#  @InochiFumetsu  <spencer>
-#  @Hey1121        <esteban>
-#
+#  @InochiFumetsu     <spencer>
+#  @Hey1121           <esteban>
+#  @MilanxDjordjevic  <milan>
 #
 
-*master/ @InochiFumetsu @Hey1121
+*master/ @InochiFumetsu @Hey1121 @MilanxDjordjevic
+
 
 # @InochiFumetsu   <spencer>
 */.github/ @InochiFumetsu
