@@ -119,6 +119,7 @@ def student_age_dictionary(file_name: str) -> dict:
 
 
 #!! BELOW ALL OTHER FUNCTIONS!!
+def load_data():
 def add_average():
 
 
