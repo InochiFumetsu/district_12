@@ -10,20 +10,20 @@
 
 
 # @InochiFumetsu   <spencer>
-*master/.github/ @InochiFumetsu
-*master/docs/ @InochiFumetsu
-*master/temp/ @InochiFumetsu
-*master/individual/spencer/ @InochiFumetsu
-*spencer_individual/ @InochiFumetsu
+/.github/ @InochiFumetsu
+/docs/ @InochiFumetsu
+/temp/ @InochiFumetsu
+/individual/spencer/ @InochiFumetsu
+spencer_individual/ @InochiFumetsu
 
 # @Hey1121   <esteban>
-*master/individual/esteban/ @Hey1121
-*esteban_individual/ @Hey1121
+/individual/esteban/ @Hey1121
+esteban_individual/ @Hey1121
 
 # @Jackinator27   <jack>
-*master/individual/jack/ @Jackinator27
-*jack_individual/ @Jackinator27
+/individual/jack/ @Jackinator27
+jack_individual/ @Jackinator27
 
 # @MilanxDjordjevic   <milan>
-*master/individual/milan/ @MilanxDjordjevic
-*milan_individual/ @MilanxDjordjevic
+/individual/milan/ @MilanxDjordjevic
+milan_individual/ @MilanxDjordjevic
