@@ -82,8 +82,7 @@ def student_age_dictionary(file_name: str) -> dict:
     if not raw_import:
         raise FileNotFoundError(f"[Errno X] {file_name}: file is empty.")
 
-    raw_import[0] = raw_import[0].strip("\n ").split(sep=",")
-    keys = raw_import[0][:]
+    keys = raw_import[0].strip("\n ").split(sep=",")
     del raw_import[0]
 
     if 'Age' not in keys or len(keys) < 9:
