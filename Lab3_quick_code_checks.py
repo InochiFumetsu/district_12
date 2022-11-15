@@ -2,7 +2,7 @@
 the output of the code we wrote for our individual functions, in addition 
 to the one I shared in teams earlier today. I thought I'd share it too, 
 so I'm going to share it in this file and I'll include the script I shared
-earlier so they're all in one place
+earlier so they're all be in one place
 """
 
 
