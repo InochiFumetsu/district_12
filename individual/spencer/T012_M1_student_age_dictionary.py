@@ -38,16 +38,14 @@ def student_age_dictionary(file_name: str) -> dict:
     if not raw_import:
         raise FileNotFoundError(f"[Errno X] {file_name}: file is empty.")
 
-    keys = []
     raw_import[0] = raw_import[0].strip("\n").split(sep=",")
-    for element in raw_import[0]:
-        keys.append(element)
+    keys = raw_import[0][:]
+    del raw_import[0]
 
     if 'Age' not in keys or len(keys) < 9:
         raise TypeError(
             f"{file_name}: dataset not compatible. Missing data.")
 
-    del raw_import[0]
     for i in range(len(raw_import)):
         raw_import[i] = raw_import[i].strip("\n").split(sep=",")
 
