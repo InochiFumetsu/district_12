@@ -131,6 +131,8 @@ def student_age_dictionary(file_name: str) -> dict[list]:
 
     return age_dictionary
 
+  
+  
 def student_school_dictionary(filepath: str) -> dict[list]:
     """
     Return a dictionary with loaded data given a filepath of a .csv file.
@@ -188,6 +190,8 @@ def student_school_dictionary(filepath: str) -> dict[list]:
     file.close()
     return master_dictionary  # loaded_dictionary
 
+  
+  
 def student_failures_dictionary(filename: str) -> dict[list]:
     """
     Examples: student_failures_dictionary('student-mat_test.csv')  **student-mat_test.csv contains the first student listed in the original student-mat file from each school.
@@ -262,6 +266,8 @@ def student_failures_dictionary(filename: str) -> dict[list]:
     infile.close()  # Close the csv file
     return failures_dict
 
+  
+  
 def student_health_dictionary(file_name: str) -> dict[list]:
     """This function takes student information and sorts them by their health 
     condition. 
@@ -341,7 +347,19 @@ def student_health_dictionary(file_name: str) -> dict[list]:
     else:
         print("Invalid Key")
     return chosen_dictionary
-def add_average():
+  
+def add_average(i_dict: dict) -> dict:
+    i_dict_clone = i_dict.copy()
+    for i in iter(i_dict_clone):
+        for j in range(len(i_dict_clone[i])):
+            keys = ['G1', 'G2', 'G2']
+            average = 0
+            for element in keys:
+                average += i_dict_clone[i][j][element]
+            average = round(average / 3, 2)
+            i_dict_clone[i][j]['G_Avg'] = average
+
+    return i_dict_clone
 
 
 
@@ -351,3 +369,4 @@ sorted_student_school_dictionary = student_school_dictionary("student-mat.csv")
 sorted_student_failures_dictionary = student_failures_dictionary('student-mat.csv')
 sorted_student_health_dictionary = student_health_dictionary("student-mat.csv")
 loaded_data_example = load_data("data-mat.csv", "Health")
+dict_with_grade_average_added = add_average(sorted_student_failures_dictionary)
