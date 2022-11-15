@@ -1,31 +1,60 @@
-#STUDENT SCHOOL DICTIONARY FILE
+import string
+from typing import List
 
-#AUTHOR: <YOUR-NAME-HERE>
 
-"""
-The keys of the dictionary are the initials of the schools the students attended.
-The function assumes that only the schools listed in the data set provided (student-mat.csv) exist for the keys.
-See below for the sample output of the function:
-{ 'GP' : [ {'Age': 18, 'StudyTime': 1.8, 'Failures': 0, 'Health': 3, 'Absences': 6, 'G1': 5, 'G2': 6, 'G3': 6 },
-{another element},
-… ],
-'MB' : [ {'Age': 16, 'StudyTime': 2.6, 'Failures': 0, 'Health': 3, 'Absences': 12, 'G1': 10, 'G2': 12, 'G3': 12 },
-{another element},
-… ],
-… }
+def student_school_dictionary(filepath: str) -> dict[list]:
+    """
+    Return a dictionary with loaded data given a filepath of a .csv file.
+    Precondition: filepath is a correct and existing file path to a .csv file
+    >>>student_school_dictionary("student-mat.csv")
+    {'GP': [{'Age': 18, 'StudyTime': 2, 'Failure': 0, 'Health': 3, 'Absences': 6, 'G1': 5, 'G2': 6, 'G3': 6},
+            {'Age': 17, 'StudyTime': 2, 'Failure': 0, 'Health': 3, 'Absences': 4, 'G1': 5, 'G2': 5, 'G3': 6},
+            ...],
+     'MB': [{'Age': 18, 'StudyTime': 2, 'Failure': 0, 'Health': 3, 'Absences': 6, 'G1': 5, 'G2': 6, 'G3': 6},
+            {'Age': 17, 'StudyTime': 2, 'Failure': 0, 'Health': 3, 'Absences': 4, 'G1': 5, 'G2': 5, 'G3': 6}
+            ...],
+      ...}
+    """
+    KEY_TYPE = 'School'
+    file = open(filepath, "r")
+    master_dictionary = {}
+    first_run = True
 
-1. Follow the FDR to implement the function you have been assigned. (Note that FDR was covered in ECOR1041).
-  a. You can use “import string” and “from typing import List” only. If you think other libraries are needed, you must ask the TAs for approval. Note: You can treat a 
-     CSV file as a text file; just open it with Notepad instead of Excel to check how the data is organized.
-  b. Assume that your data does not contain duplicated entries.
-  c. Required Filename: Txxx_M1_yyy.py where xxx is your team identifier (e.g., 035) and yyy = {student_age_dictionary, student_health_dictionary, 
-     student_school_dictionary, or student_failures_dictionary} based on the function that you are implementing.
-2. Test your function. For this lab, you can just call your function to ensure that the data is loaded correctly. For testing purposes, use student-mat.csv.
-3. Submit your function (Txxx_M1_yyy.py) on Brightspace (individual submission of your assigned function). Before you submit, ensure:
-  a. Your name and student number are written at the top of the file as a Python comment.
-  b. The function has the proper name.
-  c. You have included type annotations and docstring. Do not forget to include the preconditions, if any.
-  d. At the end of the file, you have included the main script which calls the function.
-  e. The file name is correct.
-  f. Run Txxx_M1_yyy.py one more time to ensure that there are no errors!
-"""
+    for line in file:
+        temp_dict = {}
+        if first_run:
+            first_line = line.strip()
+            key_list = first_line.split(",")
+            # finds index of "School" key to avoid hard coding the index 0 (ex: suppose the column "School" was not the first column)
+            for i in range(len(key_list)):
+                if key_list[i] == KEY_TYPE:
+                    index = i
+
+            # get list of keys for inner and removes "School"
+            key_list.remove(KEY_TYPE)
+            first_run = False
+        else:  # not first line
+            line = line.strip()
+            rows = line.split(",")
+            # removes 'GP, or 'MP' from dictionary...
+            copy_rows = rows.copy()
+            rows.remove(rows[index])
+            student_dictionary = {}
+
+            for i in range(len(key_list)):  # creates the subset dictionary
+                student_dictionary[key_list[i]] = int(rows[i])
+            # make line a dictionary minus KEY_TYPE DATA (remove)
+
+            if copy_rows[index] in master_dictionary:
+                # add onto pre-existing list if key already exists
+                master_dictionary[copy_rows[index]].append(
+                    student_dictionary)
+
+            else:  # the key does not exist yet, so add a key and a new list as its value; add dictionary to this list
+
+                master_dictionary[copy_rows[index]] = []
+                master_dictionary[copy_rows[index]].append(
+                    student_dictionary)
+
+    file.close()
+    return master_dictionary  # loaded_dictionary
