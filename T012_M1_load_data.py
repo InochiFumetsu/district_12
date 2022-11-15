@@ -2,8 +2,11 @@
 #AUTHORS:
 #   Spencer Hiscox    101230073
 #   Jack Roberts   101261505
-#   Esteban Heidrich
+#   Esteban Heidrich 101267959
 #   Milan Djordjevic  101262178
+
+import string
+from typing import List
 
 """
 ● Copy the four functions developed in Task 1 into this file. Ensure that the functions are one after the other and the main script 
@@ -48,7 +51,7 @@ Ensure that the function calls are added to the end of the main script.
 
 
 
-def student_age_dictionary(file_name: str) -> dict:
+def student_age_dictionary(file_name: str) -> dict[list]:
     """Return dictionary object with student ages as keys and a list of 
     dictionaries of the student information of students who are the age 
     indicated by the key as the values. The dataset is imported from the
@@ -185,8 +188,6 @@ def student_school_dictionary(filepath: str) -> dict[list]:
     file.close()
     return master_dictionary  # loaded_dictionary
 
-#--------------------------------------------------------
-
 def student_failures_dictionary(filename: str) -> dict[list]:
     """
     Examples: student_failures_dictionary('student-mat_test.csv')  **student-mat_test.csv contains the first student listed in the original student-mat file from each school.
@@ -260,10 +261,53 @@ def student_failures_dictionary(filename: str) -> dict[list]:
 
     infile.close()  # Close the csv file
     return failures_dict
+
+def student_health_dictionary(file_name: str) -> dict[list]:
+    """This function takes student information and sorts them by their health 
+    condition. 
+    
+    precondtions: file_name must be an existing file in the same folder as 
+    this function
+    
+    >>>student_health_dictionary("student_info.txt")
+    {'3': [{'School': 'GP', 'Age': '18', 'StudyTime': '2', 'Failures': '0',
+    'Absences': '6', 'G1': '5', 'G2': '6', 'G3': '6'}, {another element},
+    ...], 
+    {'5': [{'School': 'GP', 'Age': '15', 'StudyTime': '3', 'Failures': '0',
+    'Absences': '2', 'G1': '15', 'G2': '14', 'G3': '15'}, {another element},
+    ...], 
+    ...}
+    """
+    health_dictionary = {}
+    first_run = True
+    counter = 0
+    raw_data = []
+    file_content = open(file_name, "r")
+    for line in file_content:
+        if first_run:           
+            student_dict_keys = line.strip().split(",")
+            first_run = False
+        raw_data += [0]
+        raw_data[counter] = line.strip()
+        counter += 1
+    del raw_data[0]
+    for j in raw_data:
+        student_stat_1 = j.split(",")
+        health = int(student_stat_1[4])
+        if not health in health_dictionary:
+            health_dictionary[health] = []
+        health_dictionary[health].append({
+            student_dict_keys[0]: student_stat_1[0],
+            student_dict_keys[1]: int(student_stat_1[1]),
+            student_dict_keys[2]: int(student_stat_1[2]),
+            student_dict_keys[3]: int(student_stat_1[3]),
+            student_dict_keys[5]: int(student_stat_1[5]),
+            student_dict_keys[6]: int(student_stat_1[6]),
+            student_dict_keys[7]: int(student_stat_1[7]),
+            student_dict_keys[8]: int(student_stat_1[8]),
+        })
+    return health_dictionary
   
-  #----------------------------------------------------------------------
-
-
 
 #!! BELOW ALL OTHER FUNCTIONS!!
 def load_data():
@@ -275,3 +319,4 @@ def add_average():
 student_age_dictionary = student_age_dictionary('student-mat.csv')
 student_school_dictionary = student_school_dictionary("student-mat.csv")
 student_failures_dictionary = student_failures_dictionary('student-mat.csv')
+student_health_dictionary = student_health_dictionary("student-mat.csv")
