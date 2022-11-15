@@ -41,7 +41,7 @@ keys in the 'student-mat.csv' file.
 #SCRIPT 2:
 with open('output_check.txt', 'a') as check_out:
     for i in iter("""<return_val>"""):
-        check_out.write(i + ":\n")
+        check_out.write(str(i) + ":\n")
         for j in range(len("""<return_val>"""[i])):
             check_out.write('\t' + str("""<return_val>"""[i][j]) + '\n')
         check_out.write("\n\n\n")
@@ -71,7 +71,7 @@ created the dictionary properly.
 
 #SCRIPT 3:
 for i in iter("""<return_val>"""):
-    print(i, ":", sep="")
+    print(str(i), ":", sep="")
     for j in range(len("""<return_val>"""[i])):
         print("\t", """<return_val>"""[i][j], sep="")
         
