@@ -10,6 +10,8 @@ ECOR1042_Lab1B_Course_Project
     1) Create a new branch
         ***suggest title format: "LabX_<purpose_of_branch>"***
         example: "Lab3_[function]:Import_from_csv"
+        ***alterative: "<author_name>_<function_name>"
+        example: "jack_student_failures_dictionary"
     2) Inside your new branch, open the file you intend to work on in the editor on the website.
     3) Select all (CTRL-A), copy (CTRL-C)
     4) Open the corresponding file on your computer in Wing101
