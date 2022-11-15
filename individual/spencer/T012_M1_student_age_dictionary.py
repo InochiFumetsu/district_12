@@ -38,18 +38,18 @@ def student_age_dictionary(file_name: str) -> dict:
     if not raw_import:
         raise FileNotFoundError(f"[Errno X] {file_name}: file is empty.")
 
-    raw_import[0] = raw_import[0].strip("\n").split(sep=",")
+    raw_import[0] = raw_import[0].strip("\n ").split(sep=",")
     keys = raw_import[0][:]
     del raw_import[0]
 
     if 'Age' not in keys or len(keys) < 9:
         raise TypeError(
             f"{file_name}: dataset not compatible. Missing data.")
+    del file_name
 
     for i in range(len(raw_import)):
-        raw_import[i] = raw_import[i].strip("\n").split(sep=",")
+        raw_import[i] = raw_import[i].strip("\n ").split(sep=",")
 
-    i = 0
     entries = []
     for i in range(len(raw_import)):
         amalgam = dict()
@@ -59,6 +59,7 @@ def student_age_dictionary(file_name: str) -> dict:
             else:
                 amalgam[keys[j]] = raw_import[i][j]
         entries.append(amalgam)
+    del raw_import, keys
 
     age_dictionary = dict()
     for i in range(len(entries)):
@@ -67,6 +68,7 @@ def student_age_dictionary(file_name: str) -> dict:
         else:
             age_dictionary[entries[i]['Age']] = [entries[i]]
         del age_dictionary[entries[i]['Age']][-1]['Age']
+    del entries
 
     return age_dictionary
 
