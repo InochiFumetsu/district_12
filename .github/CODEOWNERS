@@ -6,20 +6,24 @@
 #  @MilanxDjordjevic  <milan>
 #  @Jackinator27      <jack>
 
-*master/ @InochiFumetsu @Hey1121 @MilanxDjordjevic @Jackinator27
+#*master/ @InochiFumetsu @Hey1121 @MilanxDjordjevic @Jackinator27
 
 
 # @InochiFumetsu   <spencer>
-*/.github/ @InochiFumetsu
-*/docs/ @InochiFumetsu
-*/temp/ @InochiFumetsu
-*/individual/spencer/ @InochiFumetsu
+/.github/ @InochiFumetsu
+/docs/ @InochiFumetsu
+/temp/ @InochiFumetsu
+/individual/spencer/ @InochiFumetsu
+spencer_individual/ @InochiFumetsu
 
 # @Hey1121   <esteban>
-*/individual/esteban/ @Hey1121
+/individual/esteban/ @Hey1121
+esteban_individual/ @Hey1121
 
 # @Jackinator27   <jack>
-*/individual/jack/ @Jackinator27
+/individual/jack/ @Jackinator27
+jack_individual/ @Jackinator27
 
 # @MilanxDjordjevic   <milan>
-*/individual/milan/ @MilanxDjordjevic
+/individual/milan/ @MilanxDjordjevic
+milan_individual/ @MilanxDjordjevic
