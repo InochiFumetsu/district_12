@@ -63,3 +63,15 @@ created the dictionary properly.
 
 ****AGAIN, PLEASE REMEMBER TO *REMOVE* THIS CODE FROM YOUR FUNCTION 
 ***BEFORE*** SUBMITTING YOUR FILE****
+
+
+
+#SCRIPT 3:
+for i in iter("""<return_val>"""):
+    print(i, ":", sep="")
+    for j in range(len("""<return_val>"""[i])):
+        print("\t", """<return_val>"""[i][j], sep="")
+        
+"""
+This is just a "print-to-console" version of SCRIPT 2
+"""
