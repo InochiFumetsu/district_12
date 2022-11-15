@@ -52,9 +52,10 @@ def student_age_dictionary(file_name: str) -> dict:
     """Return dictionary object with student ages as keys and a list of 
     dictionaries of the student information of students who are the age 
     indicated by the key as the values. The dataset is imported from the
-    file specified by argument 1: 'file_name'.
+    .csv file specified by argument 1: 'file_name'.
 
-    Preconditions: file_name must exist. file_name must not be empty.
+    Preconditions: file_name must exist. file_name must not be empty. file_name
+    must be a .csv file-type
 
     >>>student_age_dictionary('student-mat.csv')
     {'18': [{' School': 'GP', 'StudyTime': '2', 'Failures': '0', 'Health': '3', 
@@ -68,6 +69,11 @@ def student_age_dictionary(file_name: str) -> dict:
     ...
     }
     """
+    if not ".csv" in file_name:
+        raise TypeError(f"Invalid file type: {file_name} is not a "
+                        "comma-separated value file. "
+                        "(File is not .csv extension)")
+
     with open(file_name, 'r') as data_file:
         raw_import = []
         for line in data_file:
@@ -94,7 +100,10 @@ def student_age_dictionary(file_name: str) -> dict:
     for i in range(len(raw_import)):
         amalgam = dict()
         for j in range(len(keys)):
-            amalgam[keys[j]] = raw_import[i][j]
+            if raw_import[i][j].isdigit():
+                amalgam[keys[j]] = int(raw_import[i][j])
+            else:
+                amalgam[keys[j]] = raw_import[i][j]
         entries.append(amalgam)
 
     age_dictionary = dict()
