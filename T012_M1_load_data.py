@@ -315,11 +315,38 @@ def student_health_dictionary(file_name: str) -> dict[list]:
     return health_dictionary
   
 
+#!! BELOW ALL OTHER FUNCTIONS!!
+  def load_data(file_name: str, dict_key: str) -> dict:
+    """This function takes two inputs: the file name and the dictionary key 
+    that the user wants and returns the chosen dictionary
+    
+    preconditions: file_name exists and is the right format and dict_key is one
+    of the existing dictionaries
+    
+    >>>load_data(data-mat.csv, Health)
+    {'3': [{'School': 'GP', 'Age': '18', 'StudyTime': '2', 'Failures': '0',
+    'Absences': '6', 'G1': '5', 'G2': '6', 'G3': '6'}, {another element},
+    ...], 
+    {'5': [{'School': 'GP', 'Age': '15', 'StudyTime': '3', 'Failures': '0',
+    'Absences': '2', 'G1': '15', 'G2': '14', 'G3': '15'}, {another element},
+    ...], 
+    ...}
+    >>>load_data(data-mat.csv, ealth)
+    'Invalid Key'
+    """
 
-def load_data():
-  
-  
-  
+    chosen_dictionary = {}
+    if dict_key == "School":
+        chosen_dictionary = student_school_dictionary(file_name)
+    elif dict_key == "Age":
+        chosen_dictionary = student_age_dictionary(file_name)
+    elif dict_key == "Health":
+        chosen_dictionary = student_health_dictionary(file_name)
+    elif dict_key == "Failures":
+        chosen_dictionary = student_failures_dictionary(file_name)
+    else:
+        print("Invalid Key")
+    return chosen_dictionary
   
 def add_average(i_dict: dict) -> dict:
     i_dict_clone = i_dict.copy()
@@ -337,9 +364,9 @@ def add_average(i_dict: dict) -> dict:
 
 
 # MAIN SCRIPT (CALLING FUNCTION)
-student_age_dictionary = student_age_dictionary('student-mat.csv')
-student_school_dictionary = student_school_dictionary("student-mat.csv")
-student_failures_dictionary = student_failures_dictionary('student-mat.csv')
-student_health_dictionary = student_health_dictionary("student-mat.csv")
-
-dict_with_grade_average_added = add_average(student_failures_dictionary)
+sorted_student_age_dictionary = student_age_dictionary('student-mat.csv')
+sorted_student_school_dictionary = student_school_dictionary("student-mat.csv")
+sorted_student_failures_dictionary = student_failures_dictionary('student-mat.csv')
+sorted_student_health_dictionary = student_health_dictionary("student-mat.csv")
+loaded_data_example = load_data("data-mat.csv", "Health")
+dict_with_grade_average_added = add_average(sorted_student_failures_dictionary)
