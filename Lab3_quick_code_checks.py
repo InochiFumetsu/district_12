@@ -71,7 +71,7 @@ created the dictionary properly.
 
 #SCRIPT 3:
 for i in iter("""<return_val>"""):
-    print(str(i), ":", sep="")
+    print(i, ":", sep="")
     for j in range(len("""<return_val>"""[i])):
         print("\t", """<return_val>"""[i][j], sep="")
         
