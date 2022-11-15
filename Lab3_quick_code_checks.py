@@ -9,7 +9,9 @@ earlier so they're all be in one place
 
 #SCRIPT 1:
 for i in iter("""<return_val>"""):
-    print(i, ":", len("""<return_val>"""[i]))
+    print(i, ":", " " * (4 - len(str(len("""<return_val>"""[i])))),
+          len("""<return_val>"""[i]), "x", sep="")
+
 
 """Here, replace <return_val> (and associated quotes) with whatever value
 your function returns.
