@@ -110,11 +110,9 @@ def student_age_dictionary(file_name: str) -> dict:
     for i in range(len(entries)):
         if entries[i]['Age'] in age_dictionary:
             age_dictionary[entries[i]['Age']].append(entries[i])
-            del age_dictionary[entries[i]['Age']][len(
-                age_dictionary[entries[i]['Age']]) - 1]['Age']
         else:
             age_dictionary[entries[i]['Age']] = [entries[i]]
-            del age_dictionary[entries[i]['Age']][0]['Age']
+        del age_dictionary[entries[i]['Age']][-1]['Age']
 
     return age_dictionary
 
