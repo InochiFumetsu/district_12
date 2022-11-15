@@ -122,3 +122,8 @@ def student_age_dictionary(file_name: str) -> dict:
 
 #!! BELOW ALL OTHER FUNCTIONS!!
 def add_average():
+
+
+
+# MAIN SCRIPT (CALLING FUNCTION)
+student_age_dictionary = student_age_dictionary('student-mat.csv')
