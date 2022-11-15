@@ -11,7 +11,7 @@ def student_age_dictionary(file_name: str) -> dict:
     .csv file specified by argument 1: 'file_name'.
 
     Preconditions: file_name must exist. file_name must not be empty. file_name
-    must be a .csv file-type
+    must be a .csv file-type.
 
     >>>student_age_dictionary('student-mat.csv')
     {'18': [{' School': 'GP', 'StudyTime': '2', 'Failures': '0', 'Health': '3', 
@@ -25,10 +25,19 @@ def student_age_dictionary(file_name: str) -> dict:
     ...
     }
     """
-    if not ".csv" in file_name:
-        raise TypeError(f"Invalid file type: {file_name} is not a "
-                        "comma-separated value file. "
-                        "(File is not .csv extension)")
+    if type(file_name) != str:
+        raise TypeError(
+            f"Invalid argument: {file_name}. "
+            "Argument must be of type <string>.")
+
+    if len(file_name) < 4:
+        raise ValueError(
+            f"[Errno X1] {file_name} is not a valid file name.")
+
+    if file_name[-4:] != ".csv":
+        raise ValueError(f"Invalid file type: {file_name} is not a "
+                         "comma-separated value file. "
+                         "(File is not .csv extension)")
 
     with open(file_name, 'r') as data_file:
         raw_import = []
@@ -36,14 +45,18 @@ def student_age_dictionary(file_name: str) -> dict:
             raw_import.append(line)
 
     if not raw_import:
-        raise FileNotFoundError(f"[Errno X] {file_name}: file is empty.")
+        raise EOFError(f"[Errno X2] {file_name}: file is empty.")
 
     keys = raw_import[0].strip("\n ").split(sep=",")
     del raw_import[0]
 
-    if 'Age' not in keys or len(keys) < 9:
-        raise TypeError(
-            f"{file_name}: dataset not compatible. Missing data.")
+    if len(keys) == 1:
+        raise RuntimeError(
+            f"[Errno X3] {file_name} contains only one data field per entry.")
+
+    if 'Age' not in keys:
+        raise KeyError(
+            f"{file_name}: dataset not compatible. \"Age\" field not found.")
     del file_name
 
     for i in range(len(raw_import)):
