@@ -1,44 +1,49 @@
 # district_12
 ECOR1042_Lab1B_Course_Project
 
+# REPO PROCEDURE:
+## Reviewing Pull Requests (PRs) from _others_:
+    1) Click "Pull Requests" tab at the top menu bar (above)
+    2) **Start at the bottom of the list**
+    3) Click on the PR you want to review
+    4) Click on "Files Changed" tab along 2nd-top menu bar (at the right)
+    5) **Double-Check**
+        a) The PR is for a merge **from a side branch** INTO **master branch**
+        b) The PR is for a change to a main project file (eg. "T012_M1_load_data.py")
+    6) Review the changes / make any in-line comments or code suggestions you would like
+    7) Click the **GREEN BUTTON** (top-right) and select:
+        a) Comment (no review)
+        b) Request Changes
+        c) Approve
+        **CLICK SUBMIT REVIEW**
+
+## To Create a new Pull Request (PR) _adding your code to a group file_:
+    1) Click "Code" tab at the top menu bar (on the left, above)
+    2) **Double-CHeck** you are in the "MASTER" branch
+        _the drop-down showing which branch you are in is located immediately below "Issues"
+        in the top-menu-bar._
+       **NOTE:**
+       _If you can't see the list of files contained in the branch in the middle of your screen,
+       right below "MASTER" branch selection drop-down button, look for "View Code" (blue link)
+       in the center of your screen toward the bottom-half (and click it)_
+    3) Click the file you would like to edit (add your code into)
+    4) Click the **PENCIL** icon at the top-right of the file viewing pane
+    5) COPY and PASTE your code from Wing101 into the file in the correct place
+    6) Scroll to the bottom of the page - to where it says **PROPOSE CHANGES**
+    7) Replace "Create/Update <file_name.py>" with a **DESCRIPTIVE TITLE**
+       _the title should concisely tell us what change you are making to the file_
+    8) Write any additional information you would like to include with the PR in the 
+       "_Add optional extended description..._" field
+    9) Change branch title from _<your_user_name>-patch-1_ to something **descriptive**
+       _ex: final_version-add_average()_
+    10) Click the Green Button **Propose Changes**
+    11) On the next screen, click Green Button **Create Pull Request**
+    
+
 # CODE CONVENTION:
     <do we want to institute any coding conventions we all have to adhere to before we begin coding?>
     for example: 80 character line limits or writing docstrings for all functions / commenting all code?
-
-# REPO PROCEDURE:
-## To begin working on a new section:
-    1) Create a new branch
-        ***suggest title format: "LabX_<purpose_of_branch>"***
-        example: "Lab3_[function]:Import_from_csv"
-        ***alterative: "<author_name>_<function_name>"
-        example: "jack_student_failures_dictionary"
-    2) Inside your new branch, open the file you intend to work on in the editor on the website.
-    3) Select all (CTRL-A), copy (CTRL-C)
-    4) Open the corresponding file on your computer in Wing101
-    5) Select all (CTRL-A), paste (CTRL-V)
-    6) Save the file (CTRL-S)
-    7) Begin your edit.
     
-## When you are finished writing your section:
-    1) Save your file (CTRL-S)
-    2) Select all (CTRL-A), copy (CTRL-C)
-    3) Go back to the branch version of the file (should still be open in the editor on the website)
-    4) Select all (CTRL-A), paste (CTRL-V)
-    5) Update commit title / description
-    6) Click *COMMIT*
-    7) Create a *Pull Request*
-
-## Creating a "pull request" (PR)
-    1) Click on "pull requests" tab (top menu)
-    2) Click "new pull request" (green button, top-right)
-    3) ***ENSURE BASE=master and COMPARE=<your_branch_to_merge_in>***
-        note the arrow between these two drop-down menus if you forget which way the merge is going.
-    4) Update merge title / description: 
-        the title is really what matters here, want to write something to-the-point, but descriptive.
-        The aim is to make it easy for anyone to know what they're looking at if they're going back 
-        over PRs / merges / branches weeks from now.
-    5) Click Create Pull Request.
-    6) ***RESOLVE ANY CONFLICTS YOUR FILE HAS WITH THE MASTER VERSION***
 
 
 
