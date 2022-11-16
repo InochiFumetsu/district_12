@@ -16,6 +16,9 @@ ECOR1042_Lab1B_Course_Project
         b) Request Changes
         c) Approve
         **CLICK SUBMIT REVIEW**
+  **(8) Please note: If you are the one to "Squash and Merge" a PR _(you were the last one to approve the PR)_
+        Please ensure you click ("DELETE BRANCH") -- it will be located directly above the write comment field
+        in the page that loads after you merge the PR -- HIGHLIGHTED IN PURPLE BORDER
 
 ## To Create a new Pull Request (PR) _adding your code to a group file_:
     1) Click "Code" tab at the top menu bar (on the left, above)
