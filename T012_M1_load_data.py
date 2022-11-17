@@ -200,7 +200,7 @@ def student_age_dictionary(file_name: str) -> Dict[List[dict]]:
 
   
   
-def student_failures_dictionary(filename: str) -> dict[list]:
+def student_failures_dictionary(filename: str) -> Dict[List[dict]]:
     """
     Examples: student_failures_dictionary('student-mat_test.csv')  **student-mat_test.csv contains the first student listed in the original student-mat file from each school.
 
