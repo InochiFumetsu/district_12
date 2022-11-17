@@ -70,7 +70,7 @@ def student_school_dictionary(filepath: str) ->Dict[List[dict]]:
 
   
   
-def student_health_dictionary(file_name: str) -> dict[list]:
+def student_health_dictionary(file_name: str) -> Dict[List[dict]]:
     """This function takes student information and sorts them by their health 
     condition. 
     
