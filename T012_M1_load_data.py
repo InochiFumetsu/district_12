@@ -310,7 +310,7 @@ def load_data(file_name: str, dict_key: str) -> Dict[List[dict]]:
   
   
   
-def add_average(i_dict: dict) -> dict[list]:
+def add_average(i_dict: Dict[List[dict]]) -> Dict[List[dict]]:
     """Return i_dict with average grade, with precision of 2, appended to all 
     dictionary-type list entries using 'G_avg' as the key.
 
