@@ -396,3 +396,4 @@ dict_with_grade_average_added = add_average(sorted_student_failures_dictionary)
 dict_with_grade_average_added2 = add_average(sorted_student_school_dictionary)
 dict_with_grade_average_added3 = add_average(sorted_student_health_dictionary)
 dict_with_grade_average_added4 = add_average(sorted_student_age_dictionary)
+
