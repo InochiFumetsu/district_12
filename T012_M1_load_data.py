@@ -152,7 +152,6 @@ def student_school_dictionary(filepath: str) -> dict[list]:
     first_run = True
 
     for line in file:
-        temp_dict = {}
         if first_run:
             first_line = line.strip()
             key_list = first_line.split(",")
