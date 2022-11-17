@@ -8,7 +8,7 @@
 
 
 import string
-from typing import List
+from typing import List, Dict
 
 
 def student_school_dictionary(filepath: str) -> dict[list]:
