@@ -118,7 +118,7 @@ def student_health_dictionary(file_name: str) -> Dict[List[dict]]:
   
   
 
-def student_age_dictionary(file_name: str) -> dict[list]:
+def student_age_dictionary(file_name: str) -> Dict[List[dict]]:
     """Return dictionary object with student ages as keys and a list of 
     dictionaries of the student information of students who are the age 
     indicated by the key as the values. The dataset is imported from the
