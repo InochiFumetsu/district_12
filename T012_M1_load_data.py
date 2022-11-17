@@ -276,7 +276,7 @@ def student_failures_dictionary(filename: str) -> Dict[List[dict]]:
   
 
 
-def load_data(file_name: str, dict_key: str) -> dict[list]:
+def load_data(file_name: str, dict_key: str) -> Dict[List[dict]]:
     """This function takes two inputs: the file name and the dictionary key 
     that the user wants and returns the chosen dictionary
     
