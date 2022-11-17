@@ -11,7 +11,7 @@ import string
 from typing import List, Dict
 
 
-def student_school_dictionary(filepath: str) -> dict[list]:
+def student_school_dictionary(filepath: str) ->Dict[List[dict]]:
     """
     Return a dictionary with loaded data given a filepath of a .csv file.
     Precondition: filepath is a correct and existing file path to a .csv file
