@@ -99,19 +99,19 @@ def student_health_dictionary(file_name: str) -> Dict[int or str, List[dict]]:
         counter += 1
     del raw_data[0]
     for j in raw_data:
-        student_stat_1 = j.split(",")
-        health = int(student_stat_1[4])
+        student_stat = j.split(",")
+        health = int(student_stat[4])
         if not health in health_dictionary:
             health_dictionary[health] = []
         health_dictionary[health].append({
-            student_dict_keys[0]: student_stat_1[0],
-            student_dict_keys[1]: int(student_stat_1[1]),
-            student_dict_keys[2]: int(student_stat_1[2]),
-            student_dict_keys[3]: int(student_stat_1[3]),
-            student_dict_keys[5]: int(student_stat_1[5]),
-            student_dict_keys[6]: int(student_stat_1[6]),
-            student_dict_keys[7]: int(student_stat_1[7]),
-            student_dict_keys[8]: int(student_stat_1[8]),
+            student_dict_keys[0]: student_stat[0],
+            student_dict_keys[1]: int(student_stat[1]),
+            student_dict_keys[2]: int(student_stat[2]),
+            student_dict_keys[3]: int(student_stat[3]),
+            student_dict_keys[5]: int(student_stat[5]),
+            student_dict_keys[6]: int(student_stat[6]),
+            student_dict_keys[7]: int(student_stat[7]),
+            student_dict_keys[8]: int(student_stat[8]),
         })
         file_content.close()
     return health_dictionary
