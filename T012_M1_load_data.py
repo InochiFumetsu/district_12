@@ -11,7 +11,7 @@ import string
 from typing import List, Dict
 
 
-def student_school_dictionary(filepath: str) ->Dict[List[dict]]:
+def student_school_dictionary(filepath: str) ->Dict[int or str, List[dict]]:
     """
     Return a dictionary with loaded data given a filepath of a .csv file.
     Precondition: filepath is a correct and existing file path to a .csv file
@@ -69,7 +69,7 @@ def student_school_dictionary(filepath: str) ->Dict[List[dict]]:
 
   
   
-def student_health_dictionary(file_name: str) -> Dict[List[dict]]:
+def student_health_dictionary(file_name: str) -> Dict[int or str, List[dict]]:
     """This function takes student information and sorts them by their health 
     condition. 
     
@@ -113,11 +113,12 @@ def student_health_dictionary(file_name: str) -> Dict[List[dict]]:
             student_dict_keys[7]: int(student_stat_1[7]),
             student_dict_keys[8]: int(student_stat_1[8]),
         })
+        file_content.close()
     return health_dictionary
   
   
 
-def student_age_dictionary(file_name: str) -> Dict[List[dict]]:
+def student_age_dictionary(file_name: str) -> Dict[int or str, List[dict]]:
     """Return dictionary object with student ages as keys and a list of 
     dictionaries of the student information of students who are the age 
     indicated by the key as the values. The dataset is imported from the
@@ -199,7 +200,7 @@ def student_age_dictionary(file_name: str) -> Dict[List[dict]]:
 
   
   
-def student_failures_dictionary(filename: str) -> Dict[List[dict]]:
+def student_failures_dictionary(filename: str) -> Dict[int or str, List[dict]]:
     """
     Examples: student_failures_dictionary('student-mat_test.csv')  **student-mat_test.csv contains the first student listed in the original student-mat file from each school.
 
@@ -275,7 +276,7 @@ def student_failures_dictionary(filename: str) -> Dict[List[dict]]:
   
 
 
-def load_data(file_name: str, dict_key: str) -> Dict[List[dict]]:
+def load_data(file_name: str, dict_key: str) -> Dict[int or str, List[dict]]:
     """This function takes two inputs: the file name and the dictionary key 
     that the user wants and returns the chosen dictionary
     
@@ -309,12 +310,12 @@ def load_data(file_name: str, dict_key: str) -> Dict[List[dict]]:
   
   
   
-def add_average(i_dict: Dict[List[dict]]) -> Dict[List[dict]]:
+def add_average(i_dict: Dict[int or str, List[dict]]) -> Dict[int or str, List[dict]]:
     """Return i_dict with average grade, with precision of 2, appended to all 
     dictionary-type list entries using 'G_avg' as the key.
 
     Preconditions: 
-        1) i_dict must be of type Dict[List[dict]] and have been
+        1) i_dict must be of type Dict[int | str, List[int | str, dict]] and have been
          generated from any of functions:
             student_school_dictionary()
             student_health_dictionary()
