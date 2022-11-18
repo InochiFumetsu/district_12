@@ -315,7 +315,7 @@ def add_average(i_dict: Dict[int or str, List[dict]]) -> Dict[int or str, List[d
     dictionary-type list entries using 'G_avg' as the key.
 
     Preconditions: 
-        1) i_dict must be of type Dict[int | str, List[int | str, dict]] and have been
+        1) i_dict must be of type Dict[int or str, List[int or str, dict]] and have been
          generated from any of functions:
             student_school_dictionary()
             student_health_dictionary()
