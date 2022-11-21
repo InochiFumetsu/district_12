@@ -118,7 +118,7 @@ def student_health_dictionary(file_name: str) -> Dict[int or str, List[dict]]:
   
   
 
-def student_age_dictionary(file_name: str) -> Dict[int or str, List[dict]]:
+def student_age_dictionary(file_name: str) -> dict:
     """Return dictionary object with student ages as keys and a list of 
     dictionaries of the student information of students who are the age 
     indicated by the key as the values. The dataset is imported from the
@@ -128,14 +128,14 @@ def student_age_dictionary(file_name: str) -> Dict[int or str, List[dict]]:
     must be a .csv file-type.
 
     >>>student_age_dictionary('student-mat.csv')
-    {'18': [{' School': 'GP', 'StudyTime': '2', 'Failures': '0', 'Health': '3', 
-    'Absences': '6', 'G1': '5', 'G2': '6', 'G3': '6'},..., {' School': 'MS', 
-    'StudyTime': '1', 'Failures': '0', 'Health': '5', 'Absences': '0', 'G1': 
-    '11', 'G2': '12', 'G3': '10'}], 
-    '17': [{' School': 'GP', 'StudyTime': '2', 
-    'Failures': '0', 'Health': '3', 'Absences': '4', 'G1': '5', 'G2': '5', 'G3': 
-    '6'}, ..., {' School': 'MS', 'StudyTime': '1', 'Failures': '0', 'Health': 
-    '2', 'Absences': '3', 'G1': '14', 'G2': '16', 'G3': '16'}],
+    {'18': [{' School': 'GP', 'StudyTime': '2.0', 'Failures': '0', 'Health': '3', 
+    'Absences': '6', 'G1': '5.0', 'G2': '6.0', 'G3': '6.0'},..., {' School': 'MS', 
+    'StudyTime': '1.0', 'Failures': '0', 'Health': '5', 'Absences': '0', 'G1': 
+    '11.0', 'G2': '12.0', 'G3': '10.0'}], 
+    '17': [{' School': 'GP', 'StudyTime': '2.0', 'Failures': '0', 'Health': '3', 
+    'Absences': '4', 'G1': '5.0', 'G2': '5.0', 'G3': '6.0'}, ..., {' School': 'MS', 
+    'StudyTime': '1.0', 'Failures': '0', 'Health': '2', 'Absences': '3', 'G1': 
+    '14.0', 'G2': '16.0', 'G3': '16.0'}],
     ...
     }
     """
@@ -177,11 +177,15 @@ def student_age_dictionary(file_name: str) -> Dict[int or str, List[dict]]:
         raw_import[i] = raw_import[i].strip("\n ").split(sep=",")
 
     entries = []
+    float_values = ['StudyTime', 'G1', 'G2', 'G3']
     for i in range(len(raw_import)):
         amalgam = dict()
         for j in range(len(keys)):
             if raw_import[i][j].isdigit():
-                amalgam[keys[j]] = int(raw_import[i][j])
+                if keys[j] in float_values:
+                    amalgam[keys[j]] = float(raw_import[i][j])
+                else:
+                    amalgam[keys[j]] = int(raw_import[i][j])
             else:
                 amalgam[keys[j]] = raw_import[i][j]
         entries.append(amalgam)
