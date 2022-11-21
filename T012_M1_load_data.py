@@ -291,7 +291,7 @@ def load_data(file_name: str, dict_key: str) -> Dict[int or str, List[dict]]:
     'Absences': '2', 'G1': '15', 'G2': '14', 'G3': '15'}, {another element},
     ...], 
     ...}
-    >>>load_data(data-mat.csv, ealth)
+    >>>load_data('student-mat.csv', 'Health')
     'Invalid Key'
     """
 
