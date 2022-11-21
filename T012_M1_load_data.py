@@ -128,14 +128,14 @@ def student_age_dictionary(file_name: str) -> dict:
     must be a .csv file-type.
 
     >>>student_age_dictionary('student-mat.csv')
-    {'18': [{' School': 'GP', 'StudyTime': '2.0', 'Failures': '0', 'Health': '3', 
-    'Absences': '6', 'G1': '5.0', 'G2': '6.0', 'G3': '6.0'},..., {' School': 'MS', 
-    'StudyTime': '1.0', 'Failures': '0', 'Health': '5', 'Absences': '0', 'G1': 
-    '11.0', 'G2': '12.0', 'G3': '10.0'}], 
-    '17': [{' School': 'GP', 'StudyTime': '2.0', 'Failures': '0', 'Health': '3', 
-    'Absences': '4', 'G1': '5.0', 'G2': '5.0', 'G3': '6.0'}, ..., {' School': 'MS', 
-    'StudyTime': '1.0', 'Failures': '0', 'Health': '2', 'Absences': '3', 'G1': 
-    '14.0', 'G2': '16.0', 'G3': '16.0'}],
+    {'18': [{' School': 'GP', 'StudyTime': 2.0, 'Failures': '0', 'Health': '3', 
+    'Absences': '6', 'G1': 5.0, 'G2': 6.0, 'G3': 6.0},..., {' School': 'MS', 
+    'StudyTime': 1.0, 'Failures': '0', 'Health': '5', 'Absences': '0', 'G1': 
+    11.0, 'G2': 12.0, 'G3': 10.0}], 
+    '17': [{' School': 'GP', 'StudyTime': 2.0, 'Failures': '0', 'Health': '3', 
+    'Absences': '4', 'G1': 5.0, 'G2': 5.0, 'G3': 6.0}, ..., {' School': 'MS', 
+    'StudyTime': 1.0, 'Failures': '0', 'Health': '2', 'Absences': '3', 'G1': 
+    14.0, 'G2': 16.0, 'G3': 16.0}],
     ...
     }
     """
@@ -330,14 +330,14 @@ def add_average(i_dict: Dict[int or str, List[dict]]) -> Dict[int or str, List[d
          represented by entry.
 
     >>>add_average(student_age_dictionary('student-mat.csv'))
-    {18: [{'School': 'GP', 'StudyTime': 2, 'Failures': 0, 'Health': 3, 
-    'Absences': 6, 'G1': 5, 'G2': 6, 'G3': 6, 'G_Avg': 5.67}, {'School': 'MB', 
-    'StudyTime': 1, 'Failures': 2, 'Health': 4, 'Absences': 0, 'G1': 7, 'G2': 4, 
-    'G3': 0, 'G_Avg': 3.67}, ..., {'School': 'MS', 'StudyTime': 1, 'Failures': 
-    0, 'Health': 5, 'Absences': 0, 'G1': 11, 'G2': 12, 'G3': 10, 'G_Avg': 
+    {18: [{'School': 'GP', 'StudyTime': 2.0, 'Failures': 0, 'Health': 3, 
+    'Absences': 6, 'G1': 5.0, 'G2': 6.0, 'G3': 6.0, 'G_Avg': 5.67}, {'School': 'MB', 
+    'StudyTime': 1.0, 'Failures': 2, 'Health': 4, 'Absences': 0, 'G1': 7.0, 'G2': 4.0, 
+    'G3': 0.0, 'G_Avg': 3.67}, ..., {'School': 'MS', 'StudyTime': 1.0, 'Failures': 
+    0, 'Health': 5.0, 'Absences': 0, 'G1': 11.0, 'G2': 12.0, 'G3': 10.0, 'G_Avg': 
     11.0}],
-    17: {'School': 'GP', 'StudyTime': 2, 'Failures': 0, 'Health': 3, 'Absences': 
-    4, 'G1': 5, 'G2': 5, 'G3': 6, 'G_Avg': 5.33}, 
+    17: {'School': 'GP', 'StudyTime': 2.0, 'Failures': 0, 'Health': 3, 'Absences': 
+    4, 'G1': 5.0, 'G2': 5.0, 'G3': 6.0, 'G_Avg': 5.33}, 
     ...]
     ...}
     """
@@ -367,12 +367,12 @@ def add_average(i_dict: Dict[int or str, List[dict]]) -> Dict[int or str, List[d
                         "Invalid argument: dataset incompatible. Grades keys "
                         "not found: \"G1\"/\"G2\"/\"G3\" not found.")
 
-                if type(i_dict[key][i]['G1']) != int \
-                   or type(i_dict[key][i]['G2']) != int \
-                   or type(i_dict[key][i]['G3']) != int:
+                if type(i_dict[key][i]['G1']) != float \
+                   or type(i_dict[key][i]['G2']) != float \
+                   or type(i_dict[key][i]['G3']) != float:
                     raise ValueError(
                         "Invalid argument: list-entry dicts must contain "
-                        "integer values at grades keys.")
+                        "float values at grades keys.")
 
             grade_keys = ['G1', 'G2', 'G3']
             average = 0
