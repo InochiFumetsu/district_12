@@ -106,12 +106,12 @@ def student_health_dictionary(file_name: str) -> Dict[int or str, List[dict]]:
         health_dictionary[health].append({
             student_dict_keys[0]: student_stat[0],
             student_dict_keys[1]: int(student_stat[1]),
-            student_dict_keys[2]: int(student_stat[2]),
+            student_dict_keys[2]: float(student_stat[2]),
             student_dict_keys[3]: int(student_stat[3]),
             student_dict_keys[5]: int(student_stat[5]),
-            student_dict_keys[6]: int(student_stat[6]),
-            student_dict_keys[7]: int(student_stat[7]),
-            student_dict_keys[8]: int(student_stat[8]),
+            student_dict_keys[6]: float(student_stat[6]),
+            student_dict_keys[7]: float(student_stat[7]),
+            student_dict_keys[8]: float(student_stat[8]),
         })
         file_content.close()
     return health_dictionary
