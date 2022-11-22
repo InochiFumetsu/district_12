@@ -230,7 +230,7 @@ def student_failures_dictionary(filename: str) -> Dict[int or str, List[dict]]:
 
     keys = []  # List for they keys of the csv file
     # Seperate the keys with commas and remove the new line at the end
-    basic_import[0] = basic_import[0].strip('\n').split(sep=',')
+    basic_import[0] = basic_import[0].strip('\n ').split(sep=',')
     # For loop that loops through the first line of the csv file and appends the keys
     for i in basic_import[0]:
         keys.append(i)
@@ -242,7 +242,7 @@ def student_failures_dictionary(filename: str) -> Dict[int or str, List[dict]]:
 
     # Loop through info and properly format it so it can be used later
     for i in range(len(info)):
-        info[i] = info[i].strip('\n').split(sep=',')
+        info[i] = info[i].strip('\n ').split(sep=',')
 
     for i in range(len(info)):  # Loop through the info list and convert all values under each key to the type integer, except values under the key 'School'
         for j in range(len(info[0])):
