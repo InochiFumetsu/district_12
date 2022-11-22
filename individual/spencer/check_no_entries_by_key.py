@@ -84,23 +84,23 @@ def check_no_entries_by_key(i_dict: Dict[str or int, List[dict]],
     actual = {}
     for key in iter(i_dict):
         actual[key] = len(i_dict[key])
-
-    test_identifier = ("Number of data entries by key for " 
-                      f"student_{metric.lower()}_dictionary()")
     
-    if len(actual) == len(expected):
+    i_dict = f"student_{metric.lower()}_dictionary()"
+    test_id = (f"Number of keys in {i_dict}:")
+    formatted = (f'{test_id:<65}')
+    
+    if check_equal.check_equal(formatted, len(actual), len(expected)):
         for key in expected:
-            if key in actual:
-                if check_equal.check_equal(test_identifier + f", key = {key}", 
-                                           actual[key], expected[key]):
+            test_id = (f"Dictionary key={key} in {i_dict}:")
+            formatted = (f'{test_id:<65}')
+            if (check_equal.check_equal(formatted, key in actual, True)):
+                test_id = (f"Number of data entries in {i_dict} at key={key}:")
+                formatted = (f'{test_id:<65}')
+                if check_equal.check_equal(formatted, actual[key], expected[key]):
                     continue
-            print(test_identifier + f"FAILED: expected {key} key in dict," +
-                  f"found {None}")
             return False
         return True
 
-    print(test_identifier + f"FAILED: expected {len(expected)} keys in dict, " +
-          f"got {len(actual)}")
     return False
 
 
@@ -113,4 +113,5 @@ checks_passed = 0
 for dictionary in dictionaries:
     checks_passed += int(check_no_entries_by_key(dictionary,
                          "student-mat.csv"))
-print(f"\n\n\nChecks passed: {checks_passed} / 4")
+print("\n\n")
+print(f'{f"Checks passed: {checks_passed} / 4":>72}')
