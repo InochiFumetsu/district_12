@@ -90,8 +90,9 @@ def check_no_entries_by_key(i_dict: Dict[str or int, List[dict]], file_name: str
     
     return True
 
-dictionaries = [T012_M1_load_data.student_age_dictionary("student-mat.csv"), T012_M1_load_data.student_failures_dictionary("student-mat.csv"), T012_M1_load_data.student_health_dictionary("student-mat.csv"), T012_M1_load_data.student_school_dictionary("student-mat.csv")]
+dictionaries = [T012_M1_load_data.student_school_dictionary("student-mat.csv"), T012_M1_load_data.student_health_dictionary("student-mat.csv"), T012_M1_load_data.student_age_dictionary("student-mat.csv"), T012_M1_load_data.student_failures_dictionary("student-mat.csv")]
 
 checks_passed = 0
 for dictionary in dictionaries:
-    checks_passed = int(check_no_entries_by_key(dictionary, "student-mat.csv"))
+    checks_passed += int(check_no_entries_by_key(dictionary, "student-mat.csv"))
+print(f"\n\n\nChecks passed: {checks_passed} / 4")
