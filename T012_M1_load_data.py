@@ -48,9 +48,12 @@ def student_school_dictionary(filepath: str) ->Dict[int or str, List[dict]]:
             copy_rows = rows.copy()
             rows.remove(rows[index])
             student_dictionary = {}
-
+            floats_list = ["G1", "G2", "G3", "StudyTime"]
             for i in range(len(key_list)):  # creates the subset dictionary
-                student_dictionary[key_list[i]] = int(rows[i])
+                if key_list[i] in floats_list:  # assigns float values for specific  keys
+                    student_dictionary[key_list[i]] = float(rows[i])
+                else:  # otherwise assigns them as integers
+                    student_dictionary[key_list[i]] = int(rows[i])
             # make line a dictionary minus KEY_TYPE DATA (remove)
 
             if copy_rows[index] in master_dictionary:
