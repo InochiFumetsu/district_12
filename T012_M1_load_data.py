@@ -244,13 +244,21 @@ def student_failures_dictionary(filename: str) -> Dict[int or str, List[dict]]:
     for i in range(len(info)):
         info[i] = info[i].strip('\n ').split(sep=',')
 
-    for i in range(len(info)):  # Loop through the info list and convert all values under each key to the type integer, except values under the key 'School'
+    for i in range(len(info)):  # Loop through the info list and convert all values under each key to the type integer, float, or string
         for j in range(len(info[0])):
             if j == 0:
                 (info[i])[j] = str((info[i])[j])
+            elif j == 2:
+                (info[i])[j] = float((info[i])[j])
+            elif j == 6:
+                (info[i])[j] = float((info[i])[j])
+            elif j == 7:
+                (info[i])[j] = float((info[i])[j])
+            elif j == 8:
+                (info[i])[j] = float((info[i])[j])
             else:
                 (info[i])[j] = int((info[i])[j])
-
+                
     students = []  # Create list of students that holds each student's info
     # For each row in the length of the info list, create a hold dictionary
     for row in range(len(info)):
