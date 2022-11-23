@@ -211,7 +211,7 @@ def student_failures_dictionary(filename: str) -> Dict[int or str, List[dict]]:
     """
     Examples: student_failures_dictionary('student-mat_test.csv')  **student-mat_test.csv contains the first student listed in the original student-mat file from each school.
 
-    {0: [{' School': 'GP', 'Age': 18, 'StudyTime': 2, 'Health': 3, 'Absences': 6, 'G1': 5, 'G2': 6, 'G3': 6}, {' School': 'MB', 'Age': 16, 'StudyTime': 2, 'Health': 3, 'Absences': 12, 'G1': 5, 'G2': 5, 'G3': 5}, {' School': 'MS', 'Age': 18, 'StudyTime': 2, 'Health': 5, 'Absences': 2, 'G1': 11, 'G2': 11, 'G3': 11}], 1: [{' School': 'CF', 'Age': 16, 'StudyTime': 2, 'Health': 5, 'Absences': 4, 'G1': 10, 'G2': 12, 'G3': 12}, {' School': 'BD', 'Age': 18, 'StudyTime': 2, 'Health': 2, 'Absences': 0, 'G1': 7, 'G2': 7, 'G3': 0}]}
+    {0: [{'School': 'GP', 'Age': 18, 'StudyTime': 2, 'Health': 3, 'Absences': 6, 'G1': 5, 'G2': 6, 'G3': 6}, {' School': 'MB', 'Age': 16, 'StudyTime': 2, 'Health': 3, 'Absences': 12, 'G1': 5, 'G2': 5, 'G3': 5}, {' School': 'MS', 'Age': 18, 'StudyTime': 2, 'Health': 5, 'Absences': 2, 'G1': 11, 'G2': 11, 'G3': 11}], 1: [{' School': 'CF', 'Age': 16, 'StudyTime': 2, 'Health': 5, 'Absences': 4, 'G1': 10, 'G2': 12, 'G3': 12}, {' School': 'BD', 'Age': 18, 'StudyTime': 2, 'Health': 2, 'Absences': 0, 'G1': 7, 'G2': 7, 'G3': 0}]}
 
 
     Function: The function student_failures_dictionary takes an input parameter which is supposed to be a csv file name as a string, and returns a dictionary of lists of dictionaries (the values in each row of the csv file).
