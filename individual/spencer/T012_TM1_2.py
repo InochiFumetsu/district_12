@@ -4,11 +4,18 @@ import T012_M1_load_data
 
 
 def check_no_entries_by_key(i_dict: Dict[str or int, List[dict]], 
-                            file_name: str) -> Tuple[list]:
+                            file_name: str) -> bool:
     """Return true if number of data entries contained under each key in the 
     dictionary being tested (i_dict) is equal to the number of lines whose value
     is that key in the file from which i_dict was created (file_name), and false
     otherwise.
+    
+    Preconditions: 
+        1) file name passed in as 'file_name' must be the original data file 
+               from which the dictionary passed in as 'i_dict' was generated.
+        2) file_name must be a .csv or .txt file extension and the first line of 
+               the file must contain the headers of the data columns of the file
+               (used as keys in the dicitonary generated from that file).
 
     >>>check_no_entries_by_key(student_age_dictionary("student-mat.csv"), 
     "student-mat.csv")
@@ -52,6 +59,9 @@ def check_no_entries_by_key(i_dict: Dict[str or int, List[dict]],
     if type(file_name) != str:
         raise TypeError(f"Invalid argument: {file_name}. "
                         "Argument must be of type <string>.")
+    if file_name[-4:] != ".csv" and file_name[-4:] != ".txt":
+        raise ValueError(f"Invalid argument: {file_name} is not a text file or"
+                         " a comma-separated-value (.csv) file.")
 
     expected = {}
     metric = ''
