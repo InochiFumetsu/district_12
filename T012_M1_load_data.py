@@ -48,9 +48,12 @@ def student_school_dictionary(filepath: str) ->Dict[int or str, List[dict]]:
             copy_rows = rows.copy()
             rows.remove(rows[index])
             student_dictionary = {}
-
+            floats_list = ["G1", "G2", "G3", "StudyTime"]
             for i in range(len(key_list)):  # creates the subset dictionary
-                student_dictionary[key_list[i]] = int(rows[i])
+                if key_list[i] in floats_list:  # assigns float values for specific  keys
+                    student_dictionary[key_list[i]] = float(rows[i])
+                else:  # otherwise assigns them as integers
+                    student_dictionary[key_list[i]] = int(rows[i])
             # make line a dictionary minus KEY_TYPE DATA (remove)
 
             if copy_rows[index] in master_dictionary:
@@ -106,12 +109,12 @@ def student_health_dictionary(file_name: str) -> Dict[int or str, List[dict]]:
         health_dictionary[health].append({
             student_dict_keys[0]: student_stat[0],
             student_dict_keys[1]: int(student_stat[1]),
-            student_dict_keys[2]: int(student_stat[2]),
+            student_dict_keys[2]: float(student_stat[2]),
             student_dict_keys[3]: int(student_stat[3]),
             student_dict_keys[5]: int(student_stat[5]),
-            student_dict_keys[6]: int(student_stat[6]),
-            student_dict_keys[7]: int(student_stat[7]),
-            student_dict_keys[8]: int(student_stat[8]),
+            student_dict_keys[6]: float(student_stat[6]),
+            student_dict_keys[7]: float(student_stat[7]),
+            student_dict_keys[8]: float(student_stat[8]),
         })
         file_content.close()
     return health_dictionary
@@ -128,14 +131,14 @@ def student_age_dictionary(file_name: str) -> Dict[int or str, List[dict]]:
     must be a .csv file-type.
 
     >>>student_age_dictionary('student-mat.csv')
-    {'18': [{' School': 'GP', 'StudyTime': '2', 'Failures': '0', 'Health': '3', 
-    'Absences': '6', 'G1': '5', 'G2': '6', 'G3': '6'},..., {' School': 'MS', 
-    'StudyTime': '1', 'Failures': '0', 'Health': '5', 'Absences': '0', 'G1': 
-    '11', 'G2': '12', 'G3': '10'}], 
-    '17': [{' School': 'GP', 'StudyTime': '2', 
-    'Failures': '0', 'Health': '3', 'Absences': '4', 'G1': '5', 'G2': '5', 'G3': 
-    '6'}, ..., {' School': 'MS', 'StudyTime': '1', 'Failures': '0', 'Health': 
-    '2', 'Absences': '3', 'G1': '14', 'G2': '16', 'G3': '16'}],
+    {'18': [{' School': 'GP', 'StudyTime': 2.0, 'Failures': '0', 'Health': '3', 
+    'Absences': '6', 'G1': 5.0, 'G2': 6.0, 'G3': 6.0},..., {' School': 'MS', 
+    'StudyTime': 1.0, 'Failures': '0', 'Health': '5', 'Absences': '0', 'G1': 
+    11.0, 'G2': 12.0, 'G3': 10.0}], 
+    '17': [{' School': 'GP', 'StudyTime': 2.0, 'Failures': '0', 'Health': '3', 
+    'Absences': '4', 'G1': 5.0, 'G2': 5.0, 'G3': 6.0}, ..., {' School': 'MS', 
+    'StudyTime': 1.0, 'Failures': '0', 'Health': '2', 'Absences': '3', 'G1': 
+    14.0, 'G2': 16.0, 'G3': 16.0}],
     ...
     }
     """
@@ -177,11 +180,15 @@ def student_age_dictionary(file_name: str) -> Dict[int or str, List[dict]]:
         raw_import[i] = raw_import[i].strip("\n ").split(sep=",")
 
     entries = []
+    float_values = ['StudyTime', 'G1', 'G2', 'G3']
     for i in range(len(raw_import)):
         amalgam = dict()
         for j in range(len(keys)):
             if raw_import[i][j].isdigit():
-                amalgam[keys[j]] = int(raw_import[i][j])
+                if keys[j] in float_values:
+                    amalgam[keys[j]] = float(raw_import[i][j])
+                else:
+                    amalgam[keys[j]] = int(raw_import[i][j])
             else:
                 amalgam[keys[j]] = raw_import[i][j]
         entries.append(amalgam)
@@ -204,7 +211,7 @@ def student_failures_dictionary(filename: str) -> Dict[int or str, List[dict]]:
     """
     Examples: student_failures_dictionary('student-mat_test.csv')  **student-mat_test.csv contains the first student listed in the original student-mat file from each school.
 
-    {0: [{' School': 'GP', 'Age': 18, 'StudyTime': 2, 'Health': 3, 'Absences': 6, 'G1': 5, 'G2': 6, 'G3': 6}, {' School': 'MB', 'Age': 16, 'StudyTime': 2, 'Health': 3, 'Absences': 12, 'G1': 5, 'G2': 5, 'G3': 5}, {' School': 'MS', 'Age': 18, 'StudyTime': 2, 'Health': 5, 'Absences': 2, 'G1': 11, 'G2': 11, 'G3': 11}], 1: [{' School': 'CF', 'Age': 16, 'StudyTime': 2, 'Health': 5, 'Absences': 4, 'G1': 10, 'G2': 12, 'G3': 12}, {' School': 'BD', 'Age': 18, 'StudyTime': 2, 'Health': 2, 'Absences': 0, 'G1': 7, 'G2': 7, 'G3': 0}]}
+    {0: [{'School': 'GP', 'Age': 18, 'StudyTime': 2, 'Health': 3, 'Absences': 6, 'G1': 5, 'G2': 6, 'G3': 6}, {' School': 'MB', 'Age': 16, 'StudyTime': 2, 'Health': 3, 'Absences': 12, 'G1': 5, 'G2': 5, 'G3': 5}, {' School': 'MS', 'Age': 18, 'StudyTime': 2, 'Health': 5, 'Absences': 2, 'G1': 11, 'G2': 11, 'G3': 11}], 1: [{' School': 'CF', 'Age': 16, 'StudyTime': 2, 'Health': 5, 'Absences': 4, 'G1': 10, 'G2': 12, 'G3': 12}, {' School': 'BD', 'Age': 18, 'StudyTime': 2, 'Health': 2, 'Absences': 0, 'G1': 7, 'G2': 7, 'G3': 0}]}
 
 
     Function: The function student_failures_dictionary takes an input parameter which is supposed to be a csv file name as a string, and returns a dictionary of lists of dictionaries (the values in each row of the csv file).
@@ -223,7 +230,7 @@ def student_failures_dictionary(filename: str) -> Dict[int or str, List[dict]]:
 
     keys = []  # List for they keys of the csv file
     # Seperate the keys with commas and remove the new line at the end
-    basic_import[0] = basic_import[0].strip('\n').split(sep=',')
+    basic_import[0] = basic_import[0].strip('\n ').split(sep=',')
     # For loop that loops through the first line of the csv file and appends the keys
     for i in basic_import[0]:
         keys.append(i)
@@ -235,15 +242,23 @@ def student_failures_dictionary(filename: str) -> Dict[int or str, List[dict]]:
 
     # Loop through info and properly format it so it can be used later
     for i in range(len(info)):
-        info[i] = info[i].strip('\n').split(sep=',')
+        info[i] = info[i].strip('\n ').split(sep=',')
 
-    for i in range(len(info)):  # Loop through the info list and convert all values under each key to the type integer, except values under the key 'School'
+    for i in range(len(info)):  # Loop through the info list and convert all values under each key to the type integer, float, or string
         for j in range(len(info[0])):
             if j == 0:
                 (info[i])[j] = str((info[i])[j])
+            elif j == 2:
+                (info[i])[j] = float((info[i])[j])
+            elif j == 6:
+                (info[i])[j] = float((info[i])[j])
+            elif j == 7:
+                (info[i])[j] = float((info[i])[j])
+            elif j == 8:
+                (info[i])[j] = float((info[i])[j])
             else:
                 (info[i])[j] = int((info[i])[j])
-
+                
     students = []  # Create list of students that holds each student's info
     # For each row in the length of the info list, create a hold dictionary
     for row in range(len(info)):
@@ -326,14 +341,14 @@ def add_average(i_dict: Dict[int or str, List[dict]]) -> Dict[int or str, List[d
          represented by entry.
 
     >>>add_average(student_age_dictionary('student-mat.csv'))
-    {18: [{'School': 'GP', 'StudyTime': 2, 'Failures': 0, 'Health': 3, 
-    'Absences': 6, 'G1': 5, 'G2': 6, 'G3': 6, 'G_Avg': 5.67}, {'School': 'MB', 
-    'StudyTime': 1, 'Failures': 2, 'Health': 4, 'Absences': 0, 'G1': 7, 'G2': 4, 
-    'G3': 0, 'G_Avg': 3.67}, ..., {'School': 'MS', 'StudyTime': 1, 'Failures': 
-    0, 'Health': 5, 'Absences': 0, 'G1': 11, 'G2': 12, 'G3': 10, 'G_Avg': 
+    {18: [{'School': 'GP', 'StudyTime': 2.0, 'Failures': 0, 'Health': 3, 
+    'Absences': 6, 'G1': 5.0, 'G2': 6.0, 'G3': 6.0, 'G_Avg': 5.67}, {'School': 'MB', 
+    'StudyTime': 1.0, 'Failures': 2, 'Health': 4, 'Absences': 0, 'G1': 7.0, 'G2': 4.0, 
+    'G3': 0.0, 'G_Avg': 3.67}, ..., {'School': 'MS', 'StudyTime': 1.0, 'Failures': 
+    0, 'Health': 5.0, 'Absences': 0, 'G1': 11.0, 'G2': 12.0, 'G3': 10.0, 'G_Avg': 
     11.0}],
-    17: {'School': 'GP', 'StudyTime': 2, 'Failures': 0, 'Health': 3, 'Absences': 
-    4, 'G1': 5, 'G2': 5, 'G3': 6, 'G_Avg': 5.33}, 
+    17: {'School': 'GP', 'StudyTime': 2.0, 'Failures': 0, 'Health': 3, 'Absences': 
+    4, 'G1': 5.0, 'G2': 5.0, 'G3': 6.0, 'G_Avg': 5.33}, 
     ...]
     ...}
     """
@@ -363,12 +378,12 @@ def add_average(i_dict: Dict[int or str, List[dict]]) -> Dict[int or str, List[d
                         "Invalid argument: dataset incompatible. Grades keys "
                         "not found: \"G1\"/\"G2\"/\"G3\" not found.")
 
-                if type(i_dict[key][i]['G1']) != int \
-                   or type(i_dict[key][i]['G2']) != int \
-                   or type(i_dict[key][i]['G3']) != int:
+                if type(i_dict[key][i]['G1']) != float \
+                   or type(i_dict[key][i]['G2']) != float \
+                   or type(i_dict[key][i]['G3']) != float:
                     raise ValueError(
                         "Invalid argument: list-entry dicts must contain "
-                        "integer values at grades keys.")
+                        "float values at grades keys.")
 
             grade_keys = ['G1', 'G2', 'G3']
             average = 0
