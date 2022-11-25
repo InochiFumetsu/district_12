@@ -1,6 +1,4 @@
 from typing import Tuple, Dict, List
-import check_equal
-import T012_M1_load_data
 
 
 def check_equal(description: str, actual, expected) -> None:
