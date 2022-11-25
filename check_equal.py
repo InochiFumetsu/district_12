@@ -113,7 +113,8 @@ def check_no_entries_by_key(i_dict: Dict[str or int, List[dict]],
             for key in i_dict[dict_key][0]:
                 adjusted.append(str(key.strip(" \n").replace(" ", "")))
                 if adjusted[-1].isdigit():
-                    if abs(int(adjusted[-1].rstrip(".")) / 10 - float(key)) > 0.0001:
+                    if abs(int(
+                    adjusted[-1].rstrip(".")) / 10 - float(key)) > 0.0001:
                         adjusted[-1] = float(adjusted)
                     else:
                         adjusted[-1] = int(adjusted)
@@ -136,8 +137,8 @@ def check_no_entries_by_key(i_dict: Dict[str or int, List[dict]],
             for line in file:
                 line = line.strip("\n").replace(" ", "").split(sep=",")
                 if line[index].isdigit():
-                    if abs(int(
-                        line[index].rstrip(".")) / 10 - float(line[index])) > 0.0001:
+                    if abs(int(line[index].rstrip(".")) / 10 - 
+                           float(line[index])) > 0.0001:
                         key = float(line[index])
                     else:
                         key = int(line[index])
