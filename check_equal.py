@@ -71,7 +71,7 @@ def check_no_entries_by_key(i_dict: Dict[str or int, List[dict]],
     "data_file_missing_entries_under_key_18.csv")
     Number of entries, by key in student_age_dictionary():      FAILED: expected 
     {18.0: 82, 17.0: 98, 15.0: 82, 16.0: 104, 19.0: 24, 22.0: 1, 20.0: 3, 21.0: 1}, 
-    got {18: 81, 17: 98, 15: 82, 16: 104, 19: 24, 22: 1, 20: 3, 21: 1}
+    got {18: 43, 17: 98, 15: 82, 16: 104, 19: 24, 22: 1, 20: 3, 21: 1}
     False
     """
     if type(i_dict) != dict:
