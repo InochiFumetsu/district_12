@@ -16,30 +16,23 @@ def check_no_entries_by_key(i_dict: Dict[str or int, List[dict]],
         2) file_name must be a .csv or .txt file extension and the first line of 
                the file must contain the headers of the data columns of the file
                (used as keys in the dicitonary generated from that file).
-
+               
     >>>check_no_entries_by_key(student_age_dictionary("student-mat.csv"), 
     "student-mat.csv")
-    Number of data entries by key for student_age_dictionary(), key = 18 PASSED
-    -----
-    Number of data entries by key for student_age_dictionary(), key = 17 PASSED
-    -----
-    Number of data entries by key for student_age_dictionary(), key = 15 PASSED
-    -----
-    Number of data entries by key for student_age_dictionary(), key = 16 PASSED
-    -----
-    Number of data entries by key for student_age_dictionary(), key = 19 PASSED
-    -----
-    Number of data entries by key for student_age_dictionary(), key = 22 PASSED
-    -----
-    Number of data entries by key for student_age_dictionary(), key = 20 PASSED
-    -----
-    Number of data entries by key for student_age_dictionary(), key = 21 PASSED
-    -----
+    Number of entries, by key in student_school_dictionary():   PASSED
+    ------
+    Number of entries, by key in student_health_dictionary():   PASSED
+    ------
+    Number of entries, by key in student_age_dictionary():      PASSED
+    ------
+    Number of entries, by key in student_failures_dictionary(): PASSED
+    ------
     True
     >>>check_no_entries_by_key(student_age_dictionary("student-mat.csv"),
-    "some-other-data-file.csv"
-    Number of data entries by key for student_age_dictionary(), key = 18 FAILED:
-     expected 82, got 0"
+    "data_file_missing_entries_under_key_18.csv")
+    Number of entries, by key in student_age_dictionary():      FAILED: expected 
+    {18.0: 82, 17.0: 98, 15.0: 82, 16.0: 104, 19.0: 24, 22.0: 1, 20.0: 3, 21.0: 1}, 
+    got {18: 43, 17: 98, 15: 82, 16: 104, 19: 24, 22: 1, 20: 3, 21: 1}
     False
     """
     if type(i_dict) != dict:
@@ -74,7 +67,8 @@ def check_no_entries_by_key(i_dict: Dict[str or int, List[dict]],
             for key in i_dict[dict_key][0]:
                 adjusted.append(str(key.strip(" \n").replace(" ", "")))
                 if adjusted[-1].isdigit():
-                    if abs(int(adjusted[-1].rstrip(".")) - float(key)) > 0.0001:
+                    if abs(int(
+                    adjusted[-1].rstrip(".")) / 10 - float(key)) > 0.0001:
                         adjusted[-1] = float(adjusted)
                     else:
                         adjusted[-1] = int(adjusted)
@@ -97,8 +91,8 @@ def check_no_entries_by_key(i_dict: Dict[str or int, List[dict]],
             for line in file:
                 line = line.strip("\n").replace(" ", "").split(sep=",")
                 if line[index].isdigit():
-                    if abs(int(
-                        line[index].rstrip(".")) - float(line[index])) > 0.0001:
+                    if abs(int(line[index].rstrip(".")) / 10 - 
+                           float(line[index])) > 0.0001:
                         key = float(line[index])
                     else:
                         key = int(line[index])
@@ -117,11 +111,11 @@ def check_no_entries_by_key(i_dict: Dict[str or int, List[dict]],
 
     for key in iter(i_dict):
         actual[key] = len(i_dict[key])
-    
+
     i_dict = f"student_{metric.lower()}_dictionary()"
     test_id = (f"Number of entries, by key in {i_dict}:")
     fmt_tid = (f'{test_id:<59}')
-    
+
     return check_equal.check_equal(fmt_tid, actual, expected)
 
 
