@@ -58,27 +58,20 @@ def check_no_entries_by_key(i_dict: Dict[str or int, List[dict]],
 
     >>>check_no_entries_by_key(student_age_dictionary("student-mat.csv"), 
     "student-mat.csv")
-    Number of data entries by key for student_age_dictionary(), key = 18 PASSED
-    -----
-    Number of data entries by key for student_age_dictionary(), key = 17 PASSED
-    -----
-    Number of data entries by key for student_age_dictionary(), key = 15 PASSED
-    -----
-    Number of data entries by key for student_age_dictionary(), key = 16 PASSED
-    -----
-    Number of data entries by key for student_age_dictionary(), key = 19 PASSED
-    -----
-    Number of data entries by key for student_age_dictionary(), key = 22 PASSED
-    -----
-    Number of data entries by key for student_age_dictionary(), key = 20 PASSED
-    -----
-    Number of data entries by key for student_age_dictionary(), key = 21 PASSED
-    -----
+    Number of entries, by key in student_school_dictionary():   PASSED
+    ------
+    Number of entries, by key in student_health_dictionary():   PASSED
+    ------
+    Number of entries, by key in student_age_dictionary():      PASSED
+    ------
+    Number of entries, by key in student_failures_dictionary(): PASSED
+    ------
     True
     >>>check_no_entries_by_key(student_age_dictionary("student-mat.csv"),
     "some-other-data-file.csv"
-    Number of data entries by key for student_age_dictionary(), key = 18 FAILED:
-     expected 82, got 0"
+    Number of entries, by key in student_age_dictionary():      FAILED: expected 
+    {18.0: 82, 17.0: 98, 15.0: 82, 16.0: 104, 19.0: 24, 22.0: 1, 20.0: 3, 21.0: 1}, 
+    got {18: 81, 17: 98, 15: 82, 16: 104, 19: 24, 22: 1, 20: 3, 21: 1}
     False
     """
     if type(i_dict) != dict:
