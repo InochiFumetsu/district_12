@@ -1,8 +1,11 @@
-#By:
-#Esteban Heidrich, SID: 101267959
-#
-#
-#
+#ADAPTED FROM CHECK_EQUAL.PY (BrightSpace Lecture 5: Extras)
+#AUTHORS:
+#   Spencer Hiscox    101230073
+#   Jack Roberts      101261505
+#   Esteban Heidrich  101267959
+#   Milan Djordjevic  101262178
+
+
 
 from typing import Tuple, Dict, List
 
