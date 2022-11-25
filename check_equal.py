@@ -127,6 +127,7 @@ def check_no_entries_by_key(i_dict: Dict[str or int, List[dict]],
                 else:
                     metric = key
                     break
+                metric = expected
             break
         if not key_fail:
             index = keys.index(metric)
@@ -149,14 +150,14 @@ def check_no_entries_by_key(i_dict: Dict[str or int, List[dict]],
     if key_fail:
         i_dict = f"student_{metric.lower()}_dictionary()"
         test_id = (f"{i_dict}, key check:")
-        fmt_tid = (f'{test_id:<65}')        
-        return check_equal(fmt_tid, actual, expected)        
+        fmt_tid = (f'{test_id:<57}')        
+        return check_equal.check_equal(fmt_tid, actual, expected)        
 
     for key in iter(i_dict):
         actual[key] = len(i_dict[key])
     
     i_dict = f"student_{metric.lower()}_dictionary()"
     test_id = (f"Number of entries, by key in {i_dict}:")
-    fmt_tid = (f'{test_id:<65}')
+    fmt_tid = (f'{test_id:<57}')
     
-    return check_equal(fmt_tid, actual, expected)
+    return check_equal.check_equal(fmt_tid, actual, expected)
