@@ -137,7 +137,7 @@ def check_no_entries_by_key(i_dict: Dict[str or int, List[dict]],
                 line = line.strip("\n").replace(" ", "").split(sep=",")
                 if line[index].isdigit():
                     if abs(int(
-                        line[index].rstrip(".")) - float(line[index])) > 0.0001:
+                        line[index].rstrip(".")) / 10 - float(line[index])) > 0.0001:
                         key = float(line[index])
                     else:
                         key = int(line[index])
