@@ -104,41 +104,59 @@ def check_no_entries_by_key(i_dict: Dict[str or int, List[dict]],
 
     expected = {}
     metric = ''
+    actual = {}
+    key_fail = False
     with open(file_name, 'r') as file:
         keys = file.readline().strip("\n ").split(sep=",")
         for dict_key in iter(i_dict):
+            adjusted = []
+            for key in i_dict[dict_key][0]:
+                adjusted.append(str(key.strip(" \n").replace(" ", "")))
+                if adjusted[-1].isdigit():
+                    if abs(int(adjusted[-1].rstrip(".")) - float(key)) > 0.0001:
+                        adjusted[-1] = float(adjusted)
+                    else:
+                        adjusted[-1] = int(adjusted)
+                if adjusted[-1] != key:
+                    actual = key.replace(" ", "_")
+                    expected = adjusted[-1]
+                    key_fail = True
             for key in keys:
-                if key in i_dict[dict_key][0]:
+                if key in adjusted:
                     continue
                 else:
                     metric = key
                     break
             break
-        index = keys.index(metric)
-        key = 0
-        for line in file:
-            line = line.strip("\n ").split(sep=",")
-            if line[index].isdigit():
-                if (len(line[index].rsplit(sep=".")) - 1):
-                    key = float(line[index])
+        if not key_fail:
+            index = keys.index(metric)
+            key = 0
+            for line in file:
+                line = line.strip("\n").replace(" ", "").split(sep=",")
+                if line[index].isdigit():
+                    if abs(int(
+                        line[index].rstrip(".")) - float(line[index])) > 0.0001:
+                        key = float(line[index])
+                    else:
+                        key = int(line[index])
                 else:
-                    key = int(line[index])
-            else:
-                key = line[index]
-            if key in expected:
-                expected[key] += 1
-            else:
-                expected[key] = 1
+                    key = line[index]
+                if key in expected:
+                    expected[key] += 1
+                else:
+                    expected[key] = 1
 
-    actual = {}
+    if key_fail:
+        i_dict = f"student_{metric.lower()}_dictionary()"
+        test_id = (f"{i_dict}, key check:")
+        fmt_tid = (f'{test_id:<65}')        
+        return check_equal.check_equal(fmt_tid, actual, expected)        
+
     for key in iter(i_dict):
         actual[key] = len(i_dict[key])
-    
-    print(f"\n\n{i_dict}:")
-    print(f"{'':-<{len(i_dict) + 1}}")
     
     i_dict = f"student_{metric.lower()}_dictionary()"
     test_id = (f"Number of entries, by key in {i_dict}:")
     fmt_tid = (f'{test_id:<65}')
     
-    return check_equal(fmt_tid, actual, expected)
+    return check_equal.check_equal(fmt_tid, actual, expected)
