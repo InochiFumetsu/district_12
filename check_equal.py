@@ -123,7 +123,7 @@ def check_no_entries_by_key(i_dict: Dict[str or int, List[dict]],
                     key_fail = True
             for key in keys:
                 if key in adjusted:
-                    if keys.index(key) == len(keys) -1:
+                    if keys.index(key) == len(keys) - 1:
                         metric = expected
                     continue
                 else:
