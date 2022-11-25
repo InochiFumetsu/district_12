@@ -134,22 +134,11 @@ def check_no_entries_by_key(i_dict: Dict[str or int, List[dict]],
     for key in iter(i_dict):
         actual[key] = len(i_dict[key])
     
-    i_dict = f"student_{metric.lower()}_dictionary()"
-    test_id = (f"Number of keys in {i_dict}:")
-    fmt_tid = (f'{test_id:<65}')
     print(f"\n\n{i_dict}:")
     print(f"{'':-<{len(i_dict) + 1}}")
     
-    if check_equal(fmt_tid, len(actual), len(expected)):
-        for key in expected:
-            test_id = (f"Dictionary key={key} in {i_dict}:")
-            fmt_tid = (f'{test_id:<65}')
-            if (check_equal(fmt_tid, key in actual, key in expected)):
-                test_id = (f"Number of data entries in {i_dict} at key={key}:")
-                fmt_tid = (f'{test_id:<65}')
-                if check_equal(fmt_tid, actual[key], expected[key]):
-                    continue
-            return False
-        return True
-
-    return False
+    i_dict = f"student_{metric.lower()}_dictionary()"
+    test_id = (f"Number of entries, by key in {i_dict}:")
+    fmt_tid = (f'{test_id:<65}')
+    
+    return check_equal(fmt_tid, actual, expected)
