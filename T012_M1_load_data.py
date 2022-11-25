@@ -8,7 +8,8 @@
 
 
 import string
-from typing import List, Dict
+from typing import List, Dict, Tuple
+import check_equal
 
 
 def student_school_dictionary(filepath: str) ->Dict[int or str, List[dict]]:
