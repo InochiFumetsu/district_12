@@ -136,4 +136,5 @@ for dictionary in dictionaries:
     checks_passed += int(check_no_entries_by_key(dictionary, "student-mat.csv"))
 
 print("\n")
-print(f'{f"Checks passed: {checks_passed} / 4":>66}')
+print(f'{f"Checks PASSED: {checks_passed}":>66}')
+print(f'{f"Checks FAILED: {4 - checks_passed}":>66}')
