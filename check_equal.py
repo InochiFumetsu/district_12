@@ -140,14 +140,14 @@ def check_no_entries_by_key(i_dict: Dict[str or int, List[dict]],
     print(f"\n\n{i_dict}:")
     print(f"{'':-<{len(i_dict) + 1}}")
     
-    if check_equal.check_equal(fmt_tid, len(actual), len(expected)):
+    if check_equal(fmt_tid, len(actual), len(expected)):
         for key in expected:
             test_id = (f"Dictionary key={key} in {i_dict}:")
             fmt_tid = (f'{test_id:<65}')
-            if (check_equal.check_equal(fmt_tid, key in actual, True)):
+            if (check_equal(fmt_tid, key in actual, True)):
                 test_id = (f"Number of data entries in {i_dict} at key={key}:")
                 fmt_tid = (f'{test_id:<65}')
-                if check_equal.check_equal(fmt_tid, actual[key], expected[key]):
+                if check_equal(fmt_tid, actual[key], expected[key]):
                     continue
             return False
         return True
