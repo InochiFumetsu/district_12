@@ -226,6 +226,7 @@ def check_no_entries_by_key(i_dict: Dict[str or int, List[dict]],
     return check_equal(fmt_tid, actual, expected)
 
 
+
 #Test 3 - Jack (Testing value types)
 def type_test() -> bool:
     """
@@ -460,6 +461,7 @@ School Error count: 0
     print("School Pass count: " + str(pass_count_school))
     print("School Error count: " + str(error_count_school) + "\n")
     return bool_failures, bool_age, bool_health, bool_school
+
 
 
 #Milan's function (test 4).
