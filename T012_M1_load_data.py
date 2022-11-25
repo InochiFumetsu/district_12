@@ -396,19 +396,35 @@ def add_average(i_dict: Dict[int or str, List[dict]]) -> Dict[int or str, List[d
 
 
 
-# MAIN() SCRIPT
-sorted_student_school_dictionary = student_school_dictionary("student-mat.csv")
-sorted_student_health_dictionary = student_health_dictionary("student-mat.csv")
-sorted_student_age_dictionary = student_age_dictionary('student-mat.csv')
-sorted_student_failures_dictionary = student_failures_dictionary('student-mat.csv')
+if __name__ == "__main__":
+    #Lab 3 checks
+    sorted_student_school_dictionary = student_school_dictionary("student-mat.csv")
+    sorted_student_health_dictionary = student_health_dictionary("student-mat.csv")
+    sorted_student_age_dictionary = student_age_dictionary('student-mat.csv')
+    sorted_student_failures_dictionary = student_failures_dictionary('student-mat.csv')
 
-loaded_data_example = load_data("student-mat.csv", "Health")
-loaded_data_ex2 = load_data("student-mat.csv", "Age")
-loaded_data_ex3 = load_data("student-mat.csv", "School")
-loaded_data_ex4 = load_data("student-mat.csv", "Failures")
+    loaded_data_example = load_data("student-mat.csv", "Health")
+    loaded_data_ex2 = load_data("student-mat.csv", "Age")
+    loaded_data_ex3 = load_data("student-mat.csv", "School")
+    loaded_data_ex4 = load_data("student-mat.csv", "Failures")
 
-dict_with_grade_average_added = add_average(sorted_student_failures_dictionary)
-dict_with_grade_average_added2 = add_average(sorted_student_school_dictionary)
-dict_with_grade_average_added3 = add_average(sorted_student_health_dictionary)
-dict_with_grade_average_added4 = add_average(sorted_student_age_dictionary)
+    dict_with_grade_average_added = add_average(sorted_student_failures_dictionary)
+    dict_with_grade_average_added2 = add_average(sorted_student_school_dictionary)
+    dict_with_grade_average_added3 = add_average(sorted_student_health_dictionary)
+    dict_with_grade_average_added4 = add_average(sorted_student_age_dictionary)
+    
+    
+    #Lab 4: unit testing
+    dictionaries = [T012_M1_load_data.student_school_dictionary("student-mat.csv"), 
+               T012_M1_load_data.student_health_dictionary("student-mat.csv"), 
+               T012_M1_load_data.student_age_dictionary("student-mat.csv"), 
+               T012_M1_load_data.student_failures_dictionary("student-mat.csv")]
 
+    checks_passed = 0
+    for dictionary in dictionaries:
+        checks_passed += int(check_no_entries_by_key(dictionary, "student-mat.csv"))
+
+    print("\n\n")
+    print(f'{f"Checks passed: {checks_passed} / 4":>72}')
+
+    
