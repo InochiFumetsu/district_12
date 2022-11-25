@@ -423,7 +423,7 @@ if __name__ == "__main__":
 
     checks_passed = 0
     for dictionary in dictionaries:
-        checks_passed += int(check_no_entries_by_key(dictionary, "student-mat.csv"))
+        checks_passed += int(check_equal.check_no_entries_by_key(dictionary, "student-mat.csv"))
 
     print("\n\n")
     print(f'{f"Checks passed: {checks_passed} / 4":>72}')
