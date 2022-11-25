@@ -162,3 +162,63 @@ def check_no_entries_by_key(i_dict: Dict[str or int, List[dict]],
     fmt_tid = (f'{test_id:<59}')
     
     return check_equal.check_equal(fmt_tid, actual, expected)
+
+#Milan's function (test 4).
+def check_add_average(original_dict: dict) -> bool:
+    """
+    Return True if ALL of the following series of tests pass:
+    1) The number of students in the original dictionary is the same as the number 
+    of students in the dictionary returned by the add_average() function.
+    2) The G_Avg key was successfully added to the new dictionary for all students. 
+    3) Lastly, one random student is selected and their average of
+    G1, G2, and G3 is compared to the calculated average from the modified dictionary.
+    Otherwise, return False.
+    Precondition: The dictionary passed must come from data from "student-mat.csv"
+    and as such the original dictionary is properly formatted with correct key-value pairs.
+
+    >>>check_add_average(sorted_student_school_dictionary)
+    Number of students remains the same in either dictionary: PASSED
+    G_Avg key was successfully added to the new dictionary: PASSED
+    Correct Average Calculated for random sample: PASSED
+    True
+
+    """
+    # assumes all test cases have failed
+    same_number = False
+    added_successfully = False
+    random_avg = False
+    counter_original = 0
+
+    modified_dict = T012_M1_load_data.add_average(original_dict)
+    for lists in original_dict.values():  # counts the number of students in original dictionary
+        counter_original += len(lists)
+
+    # random sample number generated
+    random_student = random.randint(1, counter_original)
+
+    counter_modified = 0
+
+    counter_G_Avg = 0
+
+    for lists in modified_dict.values():
+
+        for i in range(len(lists)):
+            counter_modified += 1  # counts the number of students in updated dictionary
+            if "G_Avg" in lists[i]:  # checks if "G_Avg" has been added
+                counter_G_Avg += 1
+            if random_student == counter_modified:  # random sample average compared to actual given average
+                sample_avg = round(
+                    (lists[i]["G1"] + lists[i]["G2"] + lists[i]["G3"]) / 3, 2)
+                actual_avg = lists[i]["G_Avg"]
+
+    if check_equal("Number of students remains the same in either dictionary:", counter_original, counter_modified):
+        same_number = True
+    if check_equal("G_Avg key was successfully added to the new dictionary:", counter_original, counter_G_Avg):
+        added_successfully = True
+    if check_equal("Correct Average Calculated for random sample:", sample_avg, actual_avg):
+        random_avg = True
+
+    if same_number and added_successfully and random_avg:  # All three cases must be correct to return True
+        return True
+    else:  # Failure in any one of the checks
+        return False
