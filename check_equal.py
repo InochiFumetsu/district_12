@@ -1,7 +1,7 @@
 from typing import Tuple, Dict, List
 
 
-def check_equal(description: str, actual, expected) -> None:
+def check_equal(description: str, actual: any, expected: any) -> bool:
     """
     Print a "passed" message if actual and expected have same type and
     are equal (as determined by the == operator); otherwise, print a 
