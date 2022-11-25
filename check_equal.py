@@ -1,3 +1,9 @@
+#By:
+#Esteban Heidrich, SID: 101267959
+#
+#
+#
+
 from typing import Tuple, Dict, List
 
 
@@ -38,8 +44,63 @@ def check_equal(description: str, actual: any, expected: any) -> bool:
         print("{0} PASSED".format(description))
     print("------")
     return True
-    
 
+#Esteban's check (test 1).
+def check_equal_dict_keys(file_name: str, dict_name: str) -> bool:
+    """this function prepares two lists that are tested by the check_equal
+    function and returns how many dictionaries passed the test
+    
+    precondtitions: file_name must be an existing file in the same folder as 
+    this function
+    
+    >>>check_equal_dict_keys(student-mat.csv, student_school_dictionary)
+    True
+    """
+    if dict_name == "student_school_dictionary":
+        dictionary = T012_M1_load_data.student_school_dictionary(file_name)
+        dict_num = 0
+    elif dict_name == "student_health_dictionary":
+        dictionary = T012_M1_load_data.student_health_dictionary(file_name)
+        dict_num = 3
+    elif dict_name == "student_age_dictionary":
+        dictionary = T012_M1_load_data.student_age_dictionary(file_name)
+        dict_num = 1
+    elif dict_name == "student_failures_dictionary":
+        dictionary = T012_M1_load_data.student_failures_dictionary(file_name)
+        dict_num = 2
+    descrip = "Checking whether keys in", dict_name, "should exist"
+    score = 0
+    expected_keys = set()
+    actual_keys = []
+    counter = 0
+    first_run = True
+    file_content = open(file_name, "r")
+    for line in file_content:
+        if first_run:
+            first_run = False
+        else:
+            raw_line = line.split(",")
+            for z in range(4):
+                del raw_line[-1]
+            del raw_line[2]
+            expected_keys.add(raw_line[dict_num])
+            counter += 1
+    expected_keys = list(expected_keys)
+    if not dict_name == "student_school_dictionary":
+        for i in range(0, len(expected_keys)):
+            expected_keys[i] = int(expected_keys[i])
+    for x in iter(dictionary.keys()):
+            actual_keys.append(x)
+    for l in range(len(actual_keys)):
+        index = actual_keys.index(expected_keys[l])
+        result = check_equal.check_equal(descrip, expected_keys[l], 
+                                         actual_keys[index])
+        if result:
+            score += 1
+    if score == len(expected_keys):
+        return True
+    else:
+        return False
 
 #Spencer's check (test 2).
 def check_no_entries_by_key(i_dict: Dict[str or int, List[dict]], 
