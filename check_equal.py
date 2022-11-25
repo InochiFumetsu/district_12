@@ -48,6 +48,8 @@ def check_equal(description: str, actual: any, expected: any) -> bool:
     print("------")
     return True
 
+
+
 #Esteban's check (test 1).
 def check_equal_dict_keys(file_name: str, dict_name: str) -> bool:
     """this function prepares two lists that are tested by the check_equal
@@ -104,6 +106,8 @@ def check_equal_dict_keys(file_name: str, dict_name: str) -> bool:
         return True
     else:
         return False
+
+    
 
 #Spencer's check (test 2).
 def check_no_entries_by_key(i_dict: Dict[str or int, List[dict]], 
@@ -220,6 +224,8 @@ def check_no_entries_by_key(i_dict: Dict[str or int, List[dict]],
     fmt_tid = (f'{test_id:<59}')
     
     return check_equal.check_equal(fmt_tid, actual, expected)
+
+
 
 #Milan's function (test 4).
 def check_add_average(original_dict: dict) -> bool:
