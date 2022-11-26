@@ -8,6 +8,8 @@
 
 
 from typing import Tuple, Dict, List
+import T012_M1_load_data
+import random
 
 
 def check_equal(description: str, actual: any, expected: any) -> bool:
@@ -73,7 +75,7 @@ def check_equal_dict_keys(file_name: str, dict_name: str) -> bool:
     elif dict_name == "student_failures_dictionary":
         dictionary = T012_M1_load_data.student_failures_dictionary(file_name)
         dict_num = 2
-    descrip = "Checking whether keys in", dict_name, "should exist"
+    descrip = f'{f"Checking whether keys in {dict_name} should exist:":<66}'
     score = 0
     expected_keys = set()
     actual_keys = []
@@ -98,7 +100,7 @@ def check_equal_dict_keys(file_name: str, dict_name: str) -> bool:
             actual_keys.append(x)
     for l in range(len(actual_keys)):
         index = actual_keys.index(expected_keys[l])
-        result = check_equal.check_equal(descrip, expected_keys[l], 
+        result = check_equal(descrip, expected_keys[l], 
                                          actual_keys[index])
         if result:
             score += 1
@@ -213,7 +215,7 @@ def check_no_entries_by_key(i_dict: Dict[str or int, List[dict]],
     if key_fail:
         i_dict = f"student_{metric.lower()}_dictionary()"
         test_id = (f"{i_dict}, key check:")
-        fmt_tid = (f'{test_id:<59}')        
+        fmt_tid = (f'{test_id:<66}')        
         return check_equal(fmt_tid, actual, expected)        
 
     for key in iter(i_dict):
@@ -221,7 +223,7 @@ def check_no_entries_by_key(i_dict: Dict[str or int, List[dict]],
     
     i_dict = f"student_{metric.lower()}_dictionary()"
     test_id = (f"Number of entries, by key in {i_dict}:")
-    fmt_tid = (f'{test_id:<59}')
+    fmt_tid = (f'{test_id:<66}')
     
     return check_equal(fmt_tid, actual, expected)
 
@@ -231,84 +233,84 @@ def check_no_entries_by_key(i_dict: Dict[str or int, List[dict]],
 def type_test() -> bool:
     """
     Example:
-Failures dictionary: Test 1 <class 'str'> PASSED
-------
-Failures dictionary: Test 2 <class 'int'> PASSED
-------
-Failures dictionary: Test 3 <class 'float'> PASSED
-------
-Failures dictionary: Test 4 <class 'int'> PASSED
-------
-Failures dictionary: Test 5 <class 'int'> PASSED
-------
-Failures dictionary: Test 6 <class 'float'> PASSED
-------
-Failures dictionary: Test 7 <class 'float'> PASSED
-------
-Failures dictionary: Test 8 <class 'float'> PASSED
-------
-
-Age dictionary: Test 1 <class 'str'> PASSED
-------
-Age dictionary: Test 2 <class 'float'> PASSED
-------
-Age dictionary: Test 3 <class 'int'> PASSED
-------
-Age dictionary: Test 4 <class 'int'> PASSED
-------
-Age dictionary: Test 5 <class 'int'> PASSED
-------
-Age dictionary: Test 6 <class 'float'> PASSED
-------
-Age dictionary: Test 7 <class 'float'> PASSED
-------
-Age dictionary: Test 8 <class 'float'> PASSED
-------
-
-Health dictionary: Test 1 <class 'str'> PASSED
-------
-Health dictionary: Test 2 <class 'int'> PASSED
-------
-Health dictionary: Test 3 <class 'float'> PASSED
-------
-Health dictionary: Test 4 <class 'int'> PASSED
-------
-Health dictionary: Test 5 <class 'int'> PASSED
-------
-Health dictionary: Test 6 <class 'float'> PASSED
-------
-Health dictionary: Test 7 <class 'float'> PASSED
-------
-Health dictionary: Test 8 <class 'float'> PASSED
-------
-
-School dictionary: Test 1 <class 'int'> PASSED
-------
-School dictionary: Test 2 <class 'float'> PASSED
-------
-School dictionary: Test 3 <class 'int'> PASSED
-------
-School dictionary: Test 4 <class 'int'> PASSED
-------
-School dictionary: Test 5 <class 'int'> PASSED
-------
-School dictionary: Test 6 <class 'float'> PASSED
-------
-School dictionary: Test 7 <class 'float'> PASSED
-------
-School dictionary: Test 8 <class 'float'> PASSED
-------
-
-Failures Pass count: 8
-Failures Error count: 0
-Age Pass count: 8
-Age Error count: 0
-Health Pass count: 8
-Health Error count: 0
-School Pass count: 8
-School Error count: 0
-
-(True, True, True, True)
+    Failures dictionary: Test 1 <class 'str'> PASSED
+    ------
+    Failures dictionary: Test 2 <class 'int'> PASSED
+    ------
+    Failures dictionary: Test 3 <class 'float'> PASSED
+    ------
+    Failures dictionary: Test 4 <class 'int'> PASSED
+    ------
+    Failures dictionary: Test 5 <class 'int'> PASSED
+    ------
+    Failures dictionary: Test 6 <class 'float'> PASSED
+    ------
+    Failures dictionary: Test 7 <class 'float'> PASSED
+    ------
+    Failures dictionary: Test 8 <class 'float'> PASSED
+    ------
+    
+    Age dictionary: Test 1 <class 'str'> PASSED
+    ------
+    Age dictionary: Test 2 <class 'float'> PASSED
+    ------
+    Age dictionary: Test 3 <class 'int'> PASSED
+    ------
+    Age dictionary: Test 4 <class 'int'> PASSED
+    ------
+    Age dictionary: Test 5 <class 'int'> PASSED
+    ------
+    Age dictionary: Test 6 <class 'float'> PASSED
+    ------
+    Age dictionary: Test 7 <class 'float'> PASSED
+    ------
+    Age dictionary: Test 8 <class 'float'> PASSED
+    ------
+    
+    Health dictionary: Test 1 <class 'str'> PASSED
+    ------
+    Health dictionary: Test 2 <class 'int'> PASSED
+    ------
+    Health dictionary: Test 3 <class 'float'> PASSED
+    ------
+    Health dictionary: Test 4 <class 'int'> PASSED
+    ------
+    Health dictionary: Test 5 <class 'int'> PASSED
+    ------
+    Health dictionary: Test 6 <class 'float'> PASSED
+    ------
+    Health dictionary: Test 7 <class 'float'> PASSED
+    ------
+    Health dictionary: Test 8 <class 'float'> PASSED
+    ------
+    
+    School dictionary: Test 1 <class 'int'> PASSED
+    ------
+    School dictionary: Test 2 <class 'float'> PASSED
+    ------
+    School dictionary: Test 3 <class 'int'> PASSED
+    ------
+    School dictionary: Test 4 <class 'int'> PASSED
+    ------
+    School dictionary: Test 5 <class 'int'> PASSED
+    ------
+    School dictionary: Test 6 <class 'float'> PASSED
+    ------
+    School dictionary: Test 7 <class 'float'> PASSED
+    ------
+    School dictionary: Test 8 <class 'float'> PASSED
+    ------
+    
+    Failures Pass count: 8
+    Failures Error count: 0
+    Age Pass count: 8
+    Age Error count: 0
+    Health Pass count: 8
+    Health Error count: 0
+    School Pass count: 8
+    School Error count: 0
+    
+    (True, True, True, True)
 
     The function type_test takes the type of the values for each key for the 
     first student in each dictionary, and compares it to a hardcoded set of 
@@ -340,7 +342,7 @@ School Error count: 0
             # For the length of the keys in dic, compare types by calling check_equal
             for i in range(len(data_types)):
                 # checks if the elements of data_types match the values you hard coded in types_failureskey_expected below
-                if check_equal("Failures dictionary: Test " + str(i + 1) + " " + str(data_types[i]), data_types[i], types_failureskey_expected[i]) == True:
+                if check_equal(f'{f"Failures dictionary: Test {str(i + 1)} {str(data_types[i])}:":<66}', data_types[i], types_failureskey_expected[i]) == True:
                     pass_count_failures += 1  # If the test passes, add one to the pass count
                 else:
                     print(str(data_types[i]) + "=="
@@ -348,7 +350,6 @@ School Error count: 0
                     error_count_failures += 1  # If the test fails, add one to the error count
             break  # Break out of the for loop as we only need the data from one student
         break  # Break out of the for loop as we only need the data from one student
-    print("")  # Print a blank line for clarity
 
     if pass_count_failures == 8:  # If the test passed for the whole length of keys, set the whole test equal to True
         bool_failures = True
@@ -373,7 +374,7 @@ School Error count: 0
             # For the length of the keys in dic_a, compare types by calling check_equal
             for i in range(len(data_types_a)):
                 # checks if the elements of data_types match the values you hard coded in types_agekey_expected below
-                if check_equal("Age dictionary: Test " + str(i + 1) + " " + str(data_types_a[i]), data_types_a[i], types_agekey_expected[i]) == True:
+                if check_equal(f'{f"Age dictionary: Test {str(i + 1)} {str(data_types_a[i])}:":<66}', data_types_a[i], types_agekey_expected[i]) == True:
                     pass_count_age += 1  # If the test passes, add one to the pass count
                 else:
                     print(str(data_types_a[i]) + "=="
@@ -381,7 +382,6 @@ School Error count: 0
                     error_count_age += 1  # If the test fails, add one to the error count
             break  # Break out of the for loop as we only need the data from one student
         break  # Break out of the for loop as we only need the data from one student
-    print("")  # Print a blank line for clarity
 
     if pass_count_age == 8:  # If the test passed for the whole length of keys, set the whole test equal to True
         bool_age = True
@@ -405,7 +405,7 @@ School Error count: 0
             # For the length of the keys in dic_a, compare types by calling check_equal
             for i in range(len(data_types_h)):
                 # checks if the elements of data_types match the values you hard coded in types_healthkey_expected below
-                if check_equal("Health dictionary: Test " + str(i + 1) + " " + str(data_types_h[i]), data_types_h[i], types_healthkey_expected[i]) == True:
+                if check_equal(f'{f"Health dictionary: Test {str(i + 1)} {str(data_types_h[i])}:":<66}', data_types_h[i], types_healthkey_expected[i]) == True:
                     pass_count_health += 1  # If the test passes, add one to the pass count
                 else:
                     print(str(data_types_h[i]) + "=="
@@ -413,7 +413,6 @@ School Error count: 0
                     error_count_health += 1  # If the test fails, add one to the error count
             break  # Break out of the for loop as we only need the data from one student
         break  # Break out of the for loop as we only need the data from one student
-    print("")  # Print a blank line for clarity
 
     if pass_count_health == 8:  # If the test passed for the whole length of keys, set the whole test equal to True
         bool_health = True
@@ -437,7 +436,7 @@ School Error count: 0
             # For the length of the keys in dic_a, compare types by calling check_equal
             for i in range(len(data_types_s)):
                 # checks if the elements of data_types match the values you hard coded in types_schoolkey_expected below
-                if check_equal("School dictionary: Test " + str(i + 1) + " " + str(data_types_s[i]), data_types_s[i], types_schoolkey_expected[i]) == True:
+                if check_equal(f'{f"School dictionary: Test {str(i + 1)} {str(data_types_s[i])}:":<66}', data_types_s[i], types_schoolkey_expected[i]) == True:
                     pass_count_school += 1  # If the test passes, add one to the pass count
                 else:
                     print(str(data_types_s[i]) + "=="
@@ -451,15 +450,6 @@ School Error count: 0
     else:  # Else, set the test equal to False
         bool_school = False
 
-    # Print Pass and Failures count and return booleans
-    print("\n" + "Failures Pass count: " + str(pass_count_failures))
-    print("Failures Error count: " + str(error_count_failures))
-    print("Age Pass count: " + str(pass_count_age))
-    print("Age Error count: " + str(error_count_age))
-    print("Health Pass count: " + str(pass_count_health))
-    print("Health Error count: " + str(error_count_health))
-    print("School Pass count: " + str(pass_count_school))
-    print("School Error count: " + str(error_count_school) + "\n")
     return bool_failures, bool_age, bool_health, bool_school
 
 
@@ -511,11 +501,11 @@ def check_add_average(original_dict: dict) -> bool:
                     (lists[i]["G1"] + lists[i]["G2"] + lists[i]["G3"]) / 3, 2)
                 actual_avg = lists[i]["G_Avg"]
 
-    if check_equal("Number of students remains the same in either dictionary:", counter_original, counter_modified):
+    if check_equal(f'{"Number of students remains the same in either dictionary:":<66}', counter_original, counter_modified):
         same_number = True
-    if check_equal("G_Avg key was successfully added to the new dictionary:", counter_original, counter_G_Avg):
+    if check_equal(f'{"G_Avg key was successfully added to the new dictionary:":<66}', counter_original, counter_G_Avg):
         added_successfully = True
-    if check_equal("Correct Average Calculated for random sample:", sample_avg, actual_avg):
+    if check_equal(f'{"Correct Average Calculated for random sample:":<66}', sample_avg, actual_avg):
         random_avg = True
 
     if same_number and added_successfully and random_avg:  # All three cases must be correct to return True
