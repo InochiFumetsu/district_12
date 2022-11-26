@@ -9,7 +9,6 @@
 
 import string
 from typing import List, Dict, Tuple
-import check_equal
 
 
 def student_school_dictionary(filepath: str) ->Dict[int or str, List[dict]]:
@@ -416,6 +415,8 @@ if __name__ == "__main__":
     
     
     #Lab 4: unit testing
+    import check_equal
+    
     dictionaries = [student_school_dictionary("student-mat.csv"), 
                student_health_dictionary("student-mat.csv"), 
                student_age_dictionary("student-mat.csv"), 
