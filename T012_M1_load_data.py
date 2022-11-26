@@ -438,3 +438,6 @@ if __name__ == "__main__":
     print(f'{f"{checks_passed}":<2}')
     print(f'{f"Checks FAILED: ":>67}', end="")
     print(f'{f"{16 - checks_passed}":<2}')
+    print(f'{"":>52}' + f'{"":->17}')
+    print(f'{f"TOTAL: ":>67}', end="")
+    print(f'{"16":<2}')    
