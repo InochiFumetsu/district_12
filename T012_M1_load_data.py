@@ -416,17 +416,25 @@ if __name__ == "__main__":
     
     
     #Lab 4: unit testing
-    dictionaries = [T012_M1_load_data.student_school_dictionary("student-mat.csv"), 
-               T012_M1_load_data.student_health_dictionary("student-mat.csv"), 
-               T012_M1_load_data.student_age_dictionary("student-mat.csv"), 
-               T012_M1_load_data.student_failures_dictionary("student-mat.csv")]
+    dictionaries = [student_school_dictionary("student-mat.csv"), 
+               student_health_dictionary("student-mat.csv"), 
+               student_age_dictionary("student-mat.csv"), 
+               student_failures_dictionary("student-mat.csv")]
+    dictionary_names = ['student_school_dictionary', 'student_health_dictionary', 'student_age_dictionary', 'student_failures_dictionary']
 
     checks_passed = 0
-    for dictionary in dictionaries:
-        checks_passed += int(check_equal.check_no_entries_by_key(dictionary, "student-mat.csv"))
+    
+    type_result = check_equal.type_test()
+    for i in range(4):
+        checks_passed += int(type_result[i])
+    
+    for i in range(len(dictionaries)):
+        checks_passed += int(check_equal.check_no_entries_by_key(dictionaries[i], "student-mat.csv"))
+        checks_passed += int(check_equal.check_equal_dict_keys('student-mat.csv', dictionary_names[i]))
+        checks_passed += int(check_equal.check_add_average(dictionaries[i]))
 
     print("\n")
-    print(f'{f"Checks PASSED: {checks_passed}":>66}')
-    print(f'{f"Checks FAILED: {4 - checks_passed}":>66}')
-
-    
+    print(f'{f"Checks PASSED: ":>67}', end="")
+    print(f'{f"{checks_passed}":<2}')
+    print(f'{f"Checks FAILED: ":>67}', end="")
+    print(f'{f"{16 - checks_passed}":<2}')
