@@ -8,7 +8,7 @@
 
 
 import string
-from typing import List, Dict
+from typing import List, Dict, Tuple
 
 
 def student_school_dictionary(filepath: str) ->Dict[int or str, List[dict]]:
@@ -396,19 +396,49 @@ def add_average(i_dict: Dict[int or str, List[dict]]) -> Dict[int or str, List[d
 
 
 
-# MAIN() SCRIPT
-sorted_student_school_dictionary = student_school_dictionary("student-mat.csv")
-sorted_student_health_dictionary = student_health_dictionary("student-mat.csv")
-sorted_student_age_dictionary = student_age_dictionary('student-mat.csv')
-sorted_student_failures_dictionary = student_failures_dictionary('student-mat.csv')
+if __name__ == "__main__":
+    #Lab 3 checks
+    sorted_student_school_dictionary = student_school_dictionary("student-mat.csv")
+    sorted_student_health_dictionary = student_health_dictionary("student-mat.csv")
+    sorted_student_age_dictionary = student_age_dictionary('student-mat.csv')
+    sorted_student_failures_dictionary = student_failures_dictionary('student-mat.csv')
 
-loaded_data_example = load_data("student-mat.csv", "Health")
-loaded_data_ex2 = load_data("student-mat.csv", "Age")
-loaded_data_ex3 = load_data("student-mat.csv", "School")
-loaded_data_ex4 = load_data("student-mat.csv", "Failures")
+    loaded_data_example = load_data("student-mat.csv", "Health")
+    loaded_data_ex2 = load_data("student-mat.csv", "Age")
+    loaded_data_ex3 = load_data("student-mat.csv", "School")
+    loaded_data_ex4 = load_data("student-mat.csv", "Failures")
 
-dict_with_grade_average_added = add_average(sorted_student_failures_dictionary)
-dict_with_grade_average_added2 = add_average(sorted_student_school_dictionary)
-dict_with_grade_average_added3 = add_average(sorted_student_health_dictionary)
-dict_with_grade_average_added4 = add_average(sorted_student_age_dictionary)
+    dict_with_grade_average_added = add_average(sorted_student_failures_dictionary)
+    dict_with_grade_average_added2 = add_average(sorted_student_school_dictionary)
+    dict_with_grade_average_added3 = add_average(sorted_student_health_dictionary)
+    dict_with_grade_average_added4 = add_average(sorted_student_age_dictionary)
+    
+    
+    #Lab 4: unit testing
+    import check_equal
+    
+    dictionaries = [student_school_dictionary("student-mat.csv"), 
+               student_health_dictionary("student-mat.csv"), 
+               student_age_dictionary("student-mat.csv"), 
+               student_failures_dictionary("student-mat.csv")]
+    dictionary_names = ['student_school_dictionary', 'student_health_dictionary', 'student_age_dictionary', 'student_failures_dictionary']
 
+    checks_passed = 0
+    
+    type_result = check_equal.type_test()
+    for i in range(4):
+        checks_passed += int(type_result[i])
+    
+    for i in range(len(dictionaries)):
+        checks_passed += int(check_equal.check_no_entries_by_key(dictionaries[i], "student-mat.csv"))
+        checks_passed += int(check_equal.check_equal_dict_keys('student-mat.csv', dictionary_names[i]))
+        checks_passed += int(check_equal.check_add_average(dictionaries[i]))
+
+    print("\n")
+    print(f'{f"Checks PASSED: ":>67}', end="")
+    print(f'{f"{checks_passed}":<2}')
+    print(f'{f"Checks FAILED: ":>67}', end="")
+    print(f'{f"{16 - checks_passed}":<2}')
+    print(f'{"":>52}' + f'{"":->17}')
+    print(f'{f"TOTAL: ":>67}', end="")
+    print(f'{"16":<2}')    
