@@ -1,4 +1,5 @@
 #ADAPTED FROM CHECK_EQUAL.PY (BrightSpace Lecture 5: Extras)
+#UNIT TESTING MODULE: LOAD DATA
 #AUTHORS:
 #   Spencer Hiscox    101230073
 #   Jack Roberts      101261505
