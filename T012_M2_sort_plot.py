@@ -102,6 +102,43 @@ def sort_students_bubble(my_dict: dict, attribute: str) -> list:
                 arr[i], arr[i + 1] = arr[i + 1], arr[i]
                 swap = True  # swapping is not done yet
     return arr
+    
+def selec_dic_sort(dic: dict, key: str) -> dict:
+    """
+    Example:
+    selec_dic_sort(T012_M1_load_data.add_average(T012_M1_load_data.student_failures_dictionary('student-mat.csv')), "G_Avg")
+
+    [{'School': 'MB', 'Age': 16, 'StudyTime': 1.0, 'Health': 5, 'Absences': 0, 'G1': 4.0, 'G2': 0.0, 'G3': 0.0, 'G_Avg': 1.33, 'Failures': 2}, {'School': 'MB', 'Age': 17, 'StudyTime': 1.0, 'Health': 5, 'Absences': 0, 'G1': 5.0, 'G2': 0.0, 'G3': 0.0, 'G_Avg': 1.67, 'Failures': 3}, {'School': 'MB', 'Age': 19, 'StudyTime': 1.0, 'Health': 4, 'Absences': 0, 'G1': 5.0, 'G2': 0.0, 'G3': 0.0, 'G_Avg': 1.67, 'Failures': 3}, ...
+
+    selec_dic_sort(T012_M1_load_data.student_school_dictionary('student-mat.csv'), "School")
+
+    [{'School': 'BD', 'Age': 17, 'StudyTime': 2.0, 'Health': 5, 'Absences': 14, 'G1': 12.0, 'G2': 12.0, 'G3': 12.0, 'Failures': 0}, {'School': 'BD', 'Age': 17, 'StudyTime': 2.0, 'Health': 4, 'Absences': 2, 'G1': 10.0, 'G2': 11.0, 'G3': 12.0, 'Failures': 0}, {'School': 'BD', 'Age': 16, 'StudyTime': 1.0, 'Health': 3, 'Absences': 0, 'G1': 6.0, 'G2': 0.0, 'G3': 0.0, 'Failures': 0}, {'School': 'BD', 'Age': 16, 'StudyTime': 1.0, 'Health': 5, 'Absences': 0, 'G1': 13.0, 'G2': 12.0, 'G3': 12.0, 'Failures': 0}, ...
+
+    The function selec_dic_sort takes an input dictionary thats imported from T012_M1_load_data and the key of to choice to sort that dictionary by, and sorts a new list called dictionary thats data is converted to a list using T012_M2_student_list.student_list from a dictionary, using a selection sort algorithm.
+
+    The input parameter dic is expected to be one of the four dictionaries from T012_M1_load_data (student_failures_dictionary, student_age_dictionary, student_health_dictionary, student_school_dictionary)
+
+    The input parameter key is expected to be a string indicating the key you wish to sort the list by ("School", "Age", "StudyTime", "Health", "Absences", "Failures", "G1", "G2", "G3", "G_Avg")
+
+    Preconditions: The dic and key input parmeters MUST follow the instructions listed in their respective parameter descriptions. In order to sort by G_Avg, the function must be called in the same format as called in the example above (meaning the dictionary can change, and so can the key). Must have the most recent version of T012_M1_load_data.py in the same folder as this python file.
+    """
+    dictionary = student_list(
+        dic)  # Create dictionary after using student_list function on the input dictionary.
+    for i in range(len(dictionary)):  # Start for loop for the length of the list
+        minimum_index = i  # Set a minimum index equal to index
+        # Start for loop for range of index to the length of the dictionary
+        for j in range(i + 1, len(dictionary)):
+            # Compare the dictionary at the highest sorted index (minimum index), to the dictionary at j, both with respect to the key parameter
+            if (dictionary[minimum_index][key] > dictionary[j][key]):
+                # If the dictionary at j is lower than previous minimum_index, make j the new minimum index
+                minimum_index = j
+        temp = dictionary[i]  # put array at index i into temporary (Swap)
+        # Make list at i the value of dictionary at minimum index (Swap)
+        dictionary[i] = dictionary[minimum_index]
+        # Now set the list at minimum index equal to the temp, completing the swap.
+        dictionary[minimum_index] = temp
+
+    return dictionary  # Return sorted dictionary
 
 if __name__ == "__main__":
     age_result = student_list(T012_M1_load_data.student_age_dictionary('student-mat.csv'))
