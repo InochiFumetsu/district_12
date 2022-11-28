@@ -110,9 +110,13 @@ def selec_dic_sort(dic: dict, key: str) -> dict:
 
     [{'School': 'MB', 'Age': 16, 'StudyTime': 1.0, 'Health': 5, 'Absences': 0, 'G1': 4.0, 'G2': 0.0, 'G3': 0.0, 'G_Avg': 1.33, 'Failures': 2}, {'School': 'MB', 'Age': 17, 'StudyTime': 1.0, 'Health': 5, 'Absences': 0, 'G1': 5.0, 'G2': 0.0, 'G3': 0.0, 'G_Avg': 1.67, 'Failures': 3}, {'School': 'MB', 'Age': 19, 'StudyTime': 1.0, 'Health': 4, 'Absences': 0, 'G1': 5.0, 'G2': 0.0, 'G3': 0.0, 'G_Avg': 1.67, 'Failures': 3}, ...
 
-    selec_dic_sort(T012_M1_load_data.student_school_dictionary('student-mat.csv'), "School")
+    selec_dic_sort(T012_M1_load_data.student_age_dictionary('student-mat.csv'), "School")
 
-    [{'School': 'BD', 'Age': 17, 'StudyTime': 2.0, 'Health': 5, 'Absences': 14, 'G1': 12.0, 'G2': 12.0, 'G3': 12.0, 'Failures': 0}, {'School': 'BD', 'Age': 17, 'StudyTime': 2.0, 'Health': 4, 'Absences': 2, 'G1': 10.0, 'G2': 11.0, 'G3': 12.0, 'Failures': 0}, {'School': 'BD', 'Age': 16, 'StudyTime': 1.0, 'Health': 3, 'Absences': 0, 'G1': 6.0, 'G2': 0.0, 'G3': 0.0, 'Failures': 0}, {'School': 'BD', 'Age': 16, 'StudyTime': 1.0, 'Health': 5, 'Absences': 0, 'G1': 13.0, 'G2': 12.0, 'G3': 12.0, 'Failures': 0}, ...
+    [{'School': 'BD', 'StudyTime': 2.0, 'Failures': 1, 'Health': 2, 'Absences': 0, 'G1': 7.0, 'G2': 7.0, 'G3': 0.0, 'Age': 18}, {'School': 'BD', 'StudyTime': 3.0, 'Failures': 0, 'Health': 3, 'Absences': 0, 'G1': 7.0, 'G2': 0.0, 'G3': 0.0, 'Age': 18}, {'School': 'BD', 'StudyTime': 2.0, 'Failures': 1, 'Health': 5, 'Absences': 8, 'G1': 3.0, 'G2': 5.0, 'G3': 5.0, 'Age': 18}, {'School': 'BD', 'StudyTime': 1.0, 'Failures': 1, 'Health': 5, 'Absences': 0, 'G1': 6.0, 'G2': 8.0, 'G3': 8.0, 'Age': 18}, ...
+
+    selec_dic_sort(T012_M1_load_data.student_health_dictionary('student-mat.csv'), "Health")
+
+    [{'School': 'GP', 'Age': 17, 'StudyTime': 2.0, 'Failures': 0, 'Absences': 6, 'G1': 6.0, 'G2': 5.0, 'G3': 6.0, 'Health': 1}, {'School': 'GP', 'Age': 15, 'StudyTime': 2.0, 'Failures': 0, 'Absences': 0, 'G1': 16.0, 'G2': 18.0, 'G3': 19.0, 'Health': 1}, {'School': 'GP', 'Age': 15, 'StudyTime': 2.0, 'Failures': 0, 'Absences': 0, 'G1': 13.0, 'G2': 14.0, 'G3': 15.0, 'Health': 1}, {'School': 'GP', 'Age': 15, 'StudyTime': 1.0, 'Failures': 0, 'Absences': 4, 'G1': 15.0, 'G2': 16.0, 'G3': 15.0, 'Health': 1}, ...
 
     The function selec_dic_sort takes an input dictionary thats imported from T012_M1_load_data and the key of to choice to sort that dictionary by, and sorts a new list called dictionary thats data is converted to a list using T012_M2_student_list.student_list from a dictionary, using a selection sort algorithm.
 
