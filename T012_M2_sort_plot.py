@@ -63,7 +63,7 @@ def student_list(i_dict: dict) -> list:
             
     return output_list
 
-if __name__ = "__main__":
+if __name__ == "__main__":
     age_result = student_list(T012_M1_load_data.student_age_dictionary('student-mat.csv'))
     school_result = student_list(T012_M1_load_data.student_school_dictionary('student-mat.csv'))
     failures_result = student_list(T012_M1_load_data.student_failures_dictionary('student-mat.csv'))
