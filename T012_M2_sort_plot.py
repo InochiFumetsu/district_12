@@ -336,7 +336,6 @@ if __name__ == "__main__":
     selection_sort_results = []
     bubble_sort_results = []
     student_list_results = []
-    histogram_results = []
     
     student_list_results.append(student_list(T012_M1_load_data.student_age_dictionary('student-mat.csv')))
     student_list_results.append(student_list(T012_M1_load_data.student_school_dictionary('student-mat.csv')))
@@ -344,10 +343,10 @@ if __name__ == "__main__":
     student_list_results.append(student_list(T012_M1_load_data.student_health_dictionary('student-mat.csv')))
     
     for metric in metrics:
-        histogram_results.append(histogram(T012_M1_load_data.student_health_dictionary("student-mat.csv"), metric))
-        histogram_results.append(histogram(T012_M1_load_data.student_age_dictionary("student-mat.csv"), metric))
-        histogram_results.append(histogram(T012_M1_load_data.student_failures_dictionary("student-mat.csv"), metric))
-        histogram_results.append(histogram(T012_M1_load_data.student_school_dictionary("student-mat.csv"), metric))
+        histogram(T012_M1_load_data.student_health_dictionary("student-mat.csv"), metric)
+        histogram(T012_M1_load_data.student_age_dictionary("student-mat.csv"), metric)
+        histogram(T012_M1_load_data.student_failures_dictionary("student-mat.csv"), metric)
+        histogram(T012_M1_load_data.student_school_dictionary("student-mat.csv"), metric)
         
         selection_sort_results.append(sort_students_selection(T012_M1_load_data.student_age_dictionary('student-mat.csv'), metric))
         selection_sort_results.append(sort_students_selection(T012_M1_load_data.student_school_dictionary('student-mat.csv'), metric))
