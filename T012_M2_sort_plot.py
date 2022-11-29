@@ -329,7 +329,8 @@ def histogram(dictionary: dict, attribute: str) -> None:
 #FUNCTION CALLS HERE
 if __name__ == "__main__":
     
-    metrics = ['StudyTime', 'Health', 'Absences', 'Failures', 'Age', 'School', 'G1', 'G2', 'G3']
+    metrics = ['StudyTime', 'Health', 'Absences', 'Failures', 'Age', 'School', 
+               'G1', 'G2', 'G3']
     not_numeric = ['School', 'G1', 'G2', 'G3']
     
     curve_fit_results = []
@@ -337,30 +338,75 @@ if __name__ == "__main__":
     bubble_sort_results = []
     student_list_results = []
     
-    student_list_results.append(student_list(T012_M1_load_data.student_age_dictionary('student-mat.csv')))
-    student_list_results.append(student_list(T012_M1_load_data.student_school_dictionary('student-mat.csv')))
-    student_list_results.append(student_list(T012_M1_load_data.student_failures_dictionary('student-mat.csv')))
-    student_list_results.append(student_list(T012_M1_load_data.student_health_dictionary('student-mat.csv')))
+    student_list_results.append(student_list(
+        T012_M1_load_data.student_age_dictionary('student-mat.csv')))
+    student_list_results.append(student_list(
+        T012_M1_load_data.student_school_dictionary('student-mat.csv')))
+    student_list_results.append(student_list(
+        T012_M1_load_data.student_failures_dictionary('student-mat.csv')))
+    student_list_results.append(student_list(
+        T012_M1_load_data.student_health_dictionary('student-mat.csv')))
+    
+    histogram(T012_M1_load_data.add_average(
+        T012_M1_load_data.student_health_dictionary(
+            "student-mat.csv")), 'G_Avg')
+    histogram(T012_M1_load_data.add_average(
+        T012_M1_load_data.student_age_dictionary(
+            "student-mat.csv")), 'G_Avg')
+    histogram(T012_M1_load_data.add_average(
+        T012_M1_load_data.student_school_dictionary(
+            "student-mat.csv")), 'G_Avg')
+    histogram(T012_M1_load_data.add_average(
+        T012_M1_load_data.student_failures_dictionary(
+            "student-mat.csv")), 'G_Avg')    
     
     for metric in metrics:
-        histogram(T012_M1_load_data.student_health_dictionary("student-mat.csv"), metric)
-        histogram(T012_M1_load_data.student_age_dictionary("student-mat.csv"), metric)
-        histogram(T012_M1_load_data.student_failures_dictionary("student-mat.csv"), metric)
-        histogram(T012_M1_load_data.student_school_dictionary("student-mat.csv"), metric)
+        histogram(T012_M1_load_data.student_health_dictionary(
+            "student-mat.csv"), metric)
+        histogram(T012_M1_load_data.student_age_dictionary(
+            "student-mat.csv"), metric)
+        histogram(T012_M1_load_data.student_failures_dictionary(
+            "student-mat.csv"), metric)
+        histogram(T012_M1_load_data.student_school_dictionary(
+            "student-mat.csv"), metric)
         
-        selection_sort_results.append(sort_students_selection(T012_M1_load_data.student_age_dictionary('student-mat.csv'), metric))
-        selection_sort_results.append(sort_students_selection(T012_M1_load_data.student_school_dictionary('student-mat.csv'), metric))
-        selection_sort_results.append(sort_students_selection(T012_M1_load_data.student_failures_dictionary('student-mat.csv'), metric))
-        selection_sort_results.append(sort_students_selection(T012_M1_load_data.student_health_dictionary('student-mat.csv'), metric))
+        selection_sort_results.append(sort_students_selection(
+            T012_M1_load_data.student_age_dictionary(
+                'student-mat.csv'), metric))
+        selection_sort_results.append(sort_students_selection(
+            T012_M1_load_data.student_school_dictionary(
+                'student-mat.csv'), metric))
+        selection_sort_results.append(sort_students_selection(
+            T012_M1_load_data.student_failures_dictionary(
+                'student-mat.csv'), metric))
+        selection_sort_results.append(sort_students_selection(
+            T012_M1_load_data.student_health_dictionary(
+                'student-mat.csv'), metric))
         
-        bubble_sort_results.append(sort_students_bubble(T012_M1_load_data.student_age_dictionary('student-mat.csv'), metric))
-        bubble_sort_results.append(sort_students_bubble(T012_M1_load_data.student_school_dictionary('student-mat.csv'), metric))
-        bubble_sort_results.append(sort_students_bubble(T012_M1_load_data.student_failures_dictionary('student-mat.csv'), metric))
-        bubble_sort_results.append(sort_students_bubble(T012_M1_load_data.student_health_dictionary('student-mat.csv'), metric))
-        
+        bubble_sort_results.append(sort_students_bubble(
+            T012_M1_load_data.student_age_dictionary(
+                'student-mat.csv'), metric))
+        bubble_sort_results.append(sort_students_bubble(
+            T012_M1_load_data.student_school_dictionary(
+                'student-mat.csv'), metric))
+        bubble_sort_results.append(sort_students_bubble(
+            T012_M1_load_data.student_failures_dictionary(
+                'student-mat.csv'), metric))
+        bubble_sort_results.append(sort_students_bubble(
+            T012_M1_load_data.student_health_dictionary(
+                'student-mat.csv'), metric))
+    
         for degree in range(1, 6):
             if not metric in not_numeric:
-                curve_fit_results.append(curve_fit(T012_M1_load_data.student_age_dictionary('student-mat.csv'), metric, degree))
-                curve_fit_results.append(curve_fit(T012_M1_load_data.student_school_dictionary('student-mat.csv'), metric, degree))
-                curve_fit_results.append(curve_fit(T012_M1_load_data.student_failures_dictionary('student-mat.csv'), metric, degree))
-                curve_fit_results.append(curve_fit(T012_M1_load_data.student_health_dictionary('student-mat.csv'), metric, degree))
+                curve_fit_results.append(curve_fit(
+                    T012_M1_load_data.student_age_dictionary(
+                        'student-mat.csv'), metric, degree))
+                curve_fit_results.append(curve_fit(
+                    T012_M1_load_data.student_school_dictionary(
+                        'student-mat.csv'), metric, degree))
+                curve_fit_results.append(curve_fit(
+                    T012_M1_load_data.student_failures_dictionary(
+                        'student-mat.csv'), metric, degree))
+                curve_fit_results.append(curve_fit(
+                    T012_M1_load_data.student_health_dictionary(
+                        'student-mat.csv'), metric, degree))
