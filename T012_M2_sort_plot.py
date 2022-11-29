@@ -9,6 +9,7 @@
 
 import T012_M1_load_data
 from numpy import polyfit
+import matplotlib.pyplot as plt
 
 
 def student_list(i_dict: dict) -> list:
