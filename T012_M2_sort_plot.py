@@ -284,10 +284,53 @@ def curve_fit(i_dict: dict, metric: str, degree: int) -> list:
         
     return list(polyfit(list(dataset.keys()), list(dataset.values()), degree))
 
-
+def histogram(dictionary: dict, attribute: str) -> None:
+    """Creats a graph using the attribute given to the function as the x axis
+    and the number of students in each increament of the given attribute.
+    
+    preconditions: dictionary must be one of the exsiting dictionaries in 
+    load_data. Attribute must be one of the attributes that the students have.
+    """
+    master_list = student_list(dictionary)
+    y_values = []
+    x_values = []
+    temp_set = set()
+    number_of_keys = 0
+    for j in master_list:
+        temp_set.add(j[attribute])
+    key_list = list(temp_set)
+    number_of_keys = len(key_list)
+    for i in range(number_of_keys):
+        y_values += [0]
+        x_values += [0]
+    for a in master_list:
+        for b in range(number_of_keys):
+            if a[attribute] == key_list[b]:
+                x_values[b] = a[attribute]
+    for y in master_list:
+        for z in range(number_of_keys):
+            if y[attribute] == key_list[z]:
+                y_values[z] += 1
+    graph_title = "Students, sorted by " + str(attribute)
+    fig1=plt.figure()
+    plt.title(graph_title)
+    plt.xlabel(attribute)
+    plt.ylabel('Number of Students')
+    plt.bar(x_values, y_values, color='green')
+    plt.show()
 
 #FUNCTION CALLS HERE
 if __name__ == "__main__":
+    
+    histogram(T012_M1_load_data.student_health_dictionary("student-mat.csv"), "School")
+    histogram(T012_M1_load_data.student_health_dictionary("student-mat.csv"), "StudyTime")
+    histogram(T012_M1_load_data.student_health_dictionary("student-mat.csv"), "Health")
+    histogram(T012_M1_load_data.student_health_dictionary("student-mat.csv"), "Absences")
+    histogram(T012_M1_load_data.student_health_dictionary("student-mat.csv"), "Failures")
+    histogram(T012_M1_load_data.student_health_dictionary("student-mat.csv"), "Age")
+    histogram(T012_M1_load_data.student_health_dictionary("student-mat.csv"), "G1")
+    histogram(T012_M1_load_data.student_health_dictionary("student-mat.csv"), "G2")
+    histogram(T012_M1_load_data.student_health_dictionary("student-mat.csv"), "G3")
     
     metrics = ['StudyTime', 'Health', 'Absences', 'Failures', 'Age', 'School', 'G1', 'G2', 'G3']
     not_numeric = ['School', 'G1', 'G2', 'G3']
