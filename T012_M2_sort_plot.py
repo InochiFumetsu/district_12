@@ -141,7 +141,7 @@ def sort_students_bubble(my_dict: dict, attribute: str) -> list:
     """
 
     # converts dictionary of list of dictionaries to a list of dictionaries
-    arr = T012_M2_sort_plot.student_list(my_dict)
+    arr = student_list(my_dict)
 
     swap = True
     while swap:
@@ -288,10 +288,6 @@ def curve_fit(i_dict: dict, metric: str, degree: int) -> list:
 
 #FUNCTION CALLS HERE
 if __name__ == "__main__":
-    dictionaries = [T012_M1_load_data.student_age_dictionary('student-mat.csv'), 
-                    T012_M1_load_data.student_school_dictionary('student-mat.csv'), 
-                    T012_M1_load_data.student_failures_dictionary('student-mat.csv'), 
-                    T012_M1_load_data.student_health_dictionary('student-mat.csv')]
     
     metrics = ['StudyTime', 'Health', 'Absences', 'Failures', 'Age', 'School', 'G1', 'G2', 'G3']
     not_numeric = ['School', 'G1', 'G2', 'G3']
@@ -300,12 +296,23 @@ if __name__ == "__main__":
     selection_sort_results = []
     bubble_sort_results = []
     student_list_results = []
-    for dictionary in dictionaries:
-        student_list_results.append(student_list(dictionary))
-        for metric in metrics:
-            selection_sort_results.append(sort_students_selection(dictionary, metric))
-            bubble_sort_results.append(sort_students_bubble(dictionary, metric))
-            for degree in range(1, 6):
-                if not metric in not_numeric:
-                    curve_fit_results.append(curve_fit(dictionary, metric, degree))
-                
+    
+    student_list_results.append(student_list(T012_M1_load_data.student_age_dictionary('student-mat.csv')))
+    student_list_results.append(student_list(T012_M1_load_data.student_school_dictionary('student-mat.csv')))
+    student_list_results.append(student_list(T012_M1_load_data.student_failures_dictionary('student-mat.csv')))
+    student_list_results.append(student_list(T012_M1_load_data.student_health_dictionary('student-mat.csv')))
+    for metric in metrics:
+        selection_sort_results.append(sort_students_selection(T012_M1_load_data.student_age_dictionary('student-mat.csv'), metric))
+        selection_sort_results.append(sort_students_selection(T012_M1_load_data.student_school_dictionary('student-mat.csv'), metric))
+        selection_sort_results.append(sort_students_selection(T012_M1_load_data.student_failures_dictionary('student-mat.csv'), metric))
+        selection_sort_results.append(sort_students_selection(T012_M1_load_data.student_health_dictionary('student-mat.csv'), metric))
+        bubble_sort_results.append(sort_students_bubble(T012_M1_load_data.student_age_dictionary('student-mat.csv'), metric))
+        bubble_sort_results.append(sort_students_bubble(T012_M1_load_data.student_school_dictionary('student-mat.csv'), metric))
+        bubble_sort_results.append(sort_students_bubble(T012_M1_load_data.student_failures_dictionary('student-mat.csv'), metric))
+        bubble_sort_results.append(sort_students_bubble(T012_M1_load_data.student_health_dictionary('student-mat.csv'), metric))
+        for degree in range(1, 6):
+            if not metric in not_numeric:
+                curve_fit_results.append(curve_fit(T012_M1_load_data.student_age_dictionary('student-mat.csv'), metric, degree))
+                curve_fit_results.append(curve_fit(T012_M1_load_data.student_school_dictionary('student-mat.csv'), metric, degree))
+                curve_fit_results.append(curve_fit(T012_M1_load_data.student_failures_dictionary('student-mat.csv'), metric, degree))
+                curve_fit_results.append(curve_fit(T012_M1_load_data.student_health_dictionary('student-mat.csv'), metric, degree))
