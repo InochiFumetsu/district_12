@@ -280,8 +280,8 @@ def curve_fit(i_dict: dict, metric: str, degree: int) -> list:
         dataset[key] = dataset[key][0] / dataset[key][1]
         
     num_data_points = len(dataset)
-    if num_data_points < degree:
-        degree = num_data_points
+    if num_data_points <= degree:
+        degree = num_data_points - 1
         
     return list(polyfit(list(dataset.keys()), list(dataset.values()), degree))
 
