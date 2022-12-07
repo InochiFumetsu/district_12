@@ -99,14 +99,6 @@ def maximum(attribute: str, i_dict: Dict[int or str, List[dict]])->tuple:
             break
         break
     
-    i_dict_copy = {}
-    for key in i_dict:
-        for entry in i_dict[key]:
-            if key in i_dict_copy:
-                i_dict_copy[key].append(entry.copy())
-                continue
-            i_dict_copy[key] = [entry.copy()] 
-    
     raw_data = sp.student_list(i_dict)
     
     for entry in raw_data:
@@ -127,7 +119,7 @@ def maximum(attribute: str, i_dict: Dict[int or str, List[dict]])->tuple:
         
     minimum, maximum = min(values), max(values)
     
-    coefficients = tuple(sp.curve_fit(i_dict_copy, attribute, 2))
+    coefficients = tuple(sp.curve_fit(i_dict, attribute, 2))
     
     regression_max = scop.fminbound(
         evaluate_negate_quadratic, minimum, maximum, args=coefficients)
