@@ -1,41 +1,12 @@
-# AUTHOR:
+# AUTHORS:
 #    Spencer Hiscox    101230073
+#    Milan Djordjevic  101262178
+
 
 import T012_M1_load_data as ld, T012_M2_sort_plot as sp, scipy.optimize as scop
 from numpy import float64
 from typing import Dict, List
 
-def minimum(my_dict: dict, attribute: str) -> tuple:
-    """
-    Return a tuple containing the minimum attribute and the value of G_Avg of
-    that minimum based off a quadratic regression determined through curve_fit()
-    Precondition: attribute is a propery defined key in any one of the loaded dictionaries
-    and my_dictionary follows correct format and is generated from load_data module.
-    >>>minimum(T012_M1_load_data.student_age_dictionary('student-mat.csv'), "Health")
-    (3.69, 10.27)
-    >>>minimum(T012_M1_load_data.student_age_dictionary('student-mat.csv'), "Age")
-    (22.0, 8.02)
-    >>>minimum(T012_M1_load_data.student_age_dictionary('student-mat.csv'), "Failures")
-    (3.0, 6.35)
-    """
-    # sorts the input list (to easily obtain the domain)
-    sorted_list = sp.sort_students_bubble(
-        my_dict, attribute)
-    # gets coefficients of quadratic
-    coefs = sp.curve_fit(
-        my_dict, attribute, 2)
-    # converts to tuple for fminbound argument
-    coefs_tup = tuple(coefs)
-
-    a, b, c = coefs_tup
-    # finds enpoints of domain
-    lower = sorted_list[0][attribute]
-    upper = sorted_list[len(sorted_list) - 1][attribute]
-
-    min_x = round(scop.fminbound(quadratic, lower, upper, args=coefs_tup), 2)
-    minxandminy = (min_x, round(quadratic(min_x, a, b, c), 2))
-
-    return minxandminy
 
 
 def quadratic(x: float, a: float, b: float, c: float) -> float:
@@ -50,6 +21,8 @@ def quadratic(x: float, a: float, b: float, c: float) -> float:
     -1
     """
     return a * pow(x, 2) + b * x + c
+
+
 
 def evaluate_negate_quadratic(x: float, a: float, b: float, c: float)->float:
     """Return the negated value of a quadratic equation, evaluated at x, with
@@ -83,6 +56,40 @@ def evaluate_negate_quadratic(x: float, a: float, b: float, c: float)->float:
                          "be zero (a ≠ 0).")
 
     return float(-(a * x ** 2 + b * x + c))
+    
+    
+    
+def minimum(my_dict: dict, attribute: str) -> tuple:
+    """
+    Return a tuple containing the minimum attribute and the value of G_Avg of
+    that minimum based off a quadratic regression determined through curve_fit()
+    Precondition: attribute is a propery defined key in any one of the loaded dictionaries
+    and my_dictionary follows correct format and is generated from load_data module.
+    >>>minimum(T012_M1_load_data.student_age_dictionary('student-mat.csv'), "Health")
+    (3.69, 10.27)
+    >>>minimum(T012_M1_load_data.student_age_dictionary('student-mat.csv'), "Age")
+    (22.0, 8.02)
+    >>>minimum(T012_M1_load_data.student_age_dictionary('student-mat.csv'), "Failures")
+    (3.0, 6.35)
+    """
+    # sorts the input list (to easily obtain the domain)
+    sorted_list = sp.sort_students_bubble(
+        my_dict, attribute)
+    # gets coefficients of quadratic
+    coefs = sp.curve_fit(
+        my_dict, attribute, 2)
+    # converts to tuple for fminbound argument
+    coefs_tup = tuple(coefs)
+
+    a, b, c = coefs_tup
+    # finds enpoints of domain
+    lower = sorted_list[0][attribute]
+    upper = sorted_list[len(sorted_list) - 1][attribute]
+
+    min_x = round(scop.fminbound(quadratic, lower, upper, args=coefs_tup), 2)
+    minxandminy = (min_x, round(quadratic(min_x, a, b, c), 2))
+
+    return minxandminy
 
 
 
@@ -176,25 +183,42 @@ def maximum(attribute: str, i_dict: Dict[int or str, List[dict]])->tuple:
 #MAIN SCRIPT
 if __name__ == "__main__":
     attributes = ['Health', 'Age', 'StudyTime', 'Failures', 'Absences']
-    results = {}
+    results_max = {}
+    results_min = {}
     first_run = True
     for attribute in attributes:
         if first_run:
             first_run = False
-            results['Age'] = [maximum(attribute, 
+            results_max['Age'] = [maximum(attribute, 
                            ld.student_age_dictionary("student-mat.csv"))]
-            results['School'] = [maximum(attribute, 
+            results_max['School'] = [maximum(attribute, 
                            ld.student_school_dictionary("student-mat.csv"))]
-            results['Failures'] = [maximum(attribute, 
+            results_max['Failures'] = [maximum(attribute, 
                            ld.student_failures_dictionary("student-mat.csv"))]
-            results['Health'] = [maximum(attribute, 
+            results_max['Health'] = [maximum(attribute, 
                            ld.student_health_dictionary("student-mat.csv"))]
+            results_min['Age'] = [minimum(
+                ld.student_age_dictionary("student-mat.csv"), attribute)]
+            results_min['School'] = [minimum(
+                ld.student_school_dictionary("student-mat.csv"), attribute)]
+            results_min['Failures'] = [minimum(
+                ld.student_failures_dictionary("student-mat.csv"), attribute)]
+            results_min['Health'] = [minimum(
+                ld.student_health_dictionary("student-mat.csv"), attribute)]            
             continue
-        results['Age'].append(maximum(attribute, 
+        results_max['Age'].append(maximum(attribute, 
                        ld.student_age_dictionary("student-mat.csv")))
-        results['School'].append(maximum(attribute, 
+        results_max['School'].append(maximum(attribute, 
                        ld.student_school_dictionary("student-mat.csv")))
-        results['Failures'].append(maximum(attribute, 
+        results_max['Failures'].append(maximum(attribute, 
                        ld.student_failures_dictionary("student-mat.csv")))
-        results['Health'].append(maximum(attribute, 
+        results_max['Health'].append(maximum(attribute, 
                        ld.student_health_dictionary("student-mat.csv")))
+        results_min['Age'].append(minimum(
+            ld.student_age_dictionary("student-mat.csv"), attribute))
+        results_min['School'].append(minimum(
+            ld.student_school_dictionary("student-mat.csv"), attribute))
+        results_min['Failures'].append(minimum(
+            ld.student_failures_dictionary("student-mat.csv"), attribute))
+        results_min['Health'].append(minimum(
+            ld.student_health_dictionary("student-mat.csv"), attribute))        
