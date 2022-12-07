@@ -82,14 +82,14 @@ def minimum(my_dict: dict, attribute: str) -> tuple:
     coefs_tup = tuple(coefs)
 
     a, b, c = coefs_tup
-    # finds enpoints of domain
+    # finds endpoints of domain
     lower = sorted_list[0][attribute]
     upper = sorted_list[len(sorted_list) - 1][attribute]
 
     min_x = round(scop.fminbound(quadratic, lower, upper, args=coefs_tup), 2)
-    minxandminy = (min_x, round(quadratic(min_x, a, b, c), 2))
+    min_x_and_min_y = (min_x, round(quadratic(min_x, a, b, c), 2))
 
-    return minxandminy
+    return min_x_and_min_y
 
 
 
