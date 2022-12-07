@@ -62,12 +62,12 @@ def minimum(my_dict: dict, attribute: str) -> tuple:
     Return a tuple containing the minimum attribute and the value of G_Avg of
     that minimum based off a quadratic regression determined through curve_fit()
     Precondition: attribute is a propery defined key in any one of the loaded dictionaries
-    and my_dictionary follows correct format and is generated from load_data module.
-    >>> minimum(T012_M1_load_data.student_age_dictionary('student-mat.csv'), "Health")
+    and my_dict follows correct format and is generated from load_data module.
+    >>> minimum(ld.student_age_dictionary('student-mat.csv'), "Health")
     (3.69, 10.27)
-    >>> minimum(T012_M1_load_data.student_age_dictionary('student-mat.csv'), "Age")
+    >>> minimum(ld.student_age_dictionary('student-mat.csv'), "Age")
     (22.0, 8.02)
-    >>> minimum(T012_M1_load_data.student_age_dictionary('student-mat.csv'), "Failures")
+    >>> minimum(ld.student_age_dictionary('student-mat.csv'), "Failures")
     (3.0, 6.35)
     """
     # sorts the input list (to easily obtain the domain)
@@ -218,3 +218,4 @@ if __name__ == "__main__":
             ld.student_failures_dictionary("student-mat.csv"), attribute))
         results_min['Health'].append(minimum(
             ld.student_health_dictionary("student-mat.csv"), attribute))
+
