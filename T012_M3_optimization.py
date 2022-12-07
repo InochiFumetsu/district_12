@@ -5,7 +5,51 @@ import T012_M1_load_data as ld, T012_M2_sort_plot as sp, scipy.optimize as scop
 from numpy import float64
 from typing import Dict, List
 
+def minimum(my_dict: dict, attribute: str) -> tuple:
+    """
+    Return a tuple containing the minimum attribute and the value of G_Avg of
+    that minimum based off a quadratic regression determined through curve_fit()
+    Precondition: attribute is a propery defined key in any one of the loaded dictionaries
+    and my_dictionary follows correct format and is generated from load_data module.
+    >>>minimum(T012_M1_load_data.student_age_dictionary('student-mat.csv'), "Health")
+    (3.69, 10.27)
+    >>>minimum(T012_M1_load_data.student_age_dictionary('student-mat.csv'), "Age")
+    (22.0, 8.02)
+    >>>minimum(T012_M1_load_data.student_age_dictionary('student-mat.csv'), "Failures")
+    (3.0, 6.35)
+    """
+    # sorts the input list (to easily obtain the domain)
+    sorted_list = sp.sort_students_bubble(
+        my_dict, attribute)
+    # gets coefficients of quadratic
+    coefs = sp.curve_fit(
+        my_dict, attribute, 2)
+    # converts to tuple for fminbound argument
+    coefs_tup = tuple(coefs)
 
+    a, b, c = coefs_tup
+    # finds enpoints of domain
+    lower = sorted_list[0][attribute]
+    upper = sorted_list[len(sorted_list) - 1][attribute]
+
+    min_x = round(scop.fminbound(quadratic, lower, upper, args=coefs_tup), 2)
+    minxandminy = (min_x, round(quadratic(min_x, a, b, c), 2))
+
+    return minxandminy
+
+
+def quadratic(x: float, a: float, b: float, c: float) -> float:
+    """
+    Return the value of a quadratic a*x^2 + b*x + c with coefficients a, b, and c, evaluated at x.
+
+    >>>quadratic(0, 2, -4, 5)
+    0
+    >>quadratic(1, 1, -2, 3)
+    2
+    >>quadratic(-2, 2, 4, -1)
+    -1
+    """
+    return a * pow(x, 2) + b * x + c
 
 def evaluate_negate_quadratic(x: float, a: float, b: float, c: float)->float:
     """Return the negated value of a quadratic equation, evaluated at x, with
