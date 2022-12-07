@@ -50,7 +50,7 @@ def student_list(i_dict: dict) -> list:
     with open('student-mat.csv', 'r') as file:
         keys = file.readline().strip("\n ").split(sep=",")
         
-        for dict_key in iter(i_dict):
+        for dict_key in i_dict:
             if type(i_dict[dict_key]) != list:
                 raise ValueError("Invalid argument: parameter <i_dict> (argument in"
                         " position 1) must be a dictionary whose values are lists.")
@@ -61,21 +61,13 @@ def student_list(i_dict: dict) -> list:
             
             adjusted = []
             for key in i_dict[dict_key][0]:
-                adjusted.append(str(key.strip(" \n").replace(" ", "")))
-                if adjusted[-1].isdigit():
-                    if abs(int(
-                    adjusted[-1].rstrip(".")) / 10 - float(key)) > 0.0001:
-                        adjusted[-1] = float(adjusted)
-                    else:
-                        adjusted[-1] = int(adjusted)
+                adjusted.append(key.strip(" \n").replace(" ", ""))
                 if adjusted[-1] != key:
                     actual = key.replace(" ", "_")
                     expected = adjusted[-1]
                     key_fail = True
             for key in keys:
                 if key in adjusted:
-                    if keys.index(key) == len(keys) - 1:
-                        metric = expected
                     continue
                 else:
                     metric = key
@@ -87,8 +79,7 @@ def student_list(i_dict: dict) -> list:
             for line in file:
                 line = line.strip("\n").replace(" ", "").split(sep=",")
                 if line[index].isdigit():
-                    if abs(int(line[index].rstrip(".")) / 10 - 
-                           float(line[index])) > 0.0001:
+                    if "." in line[index]:
                         key = float(line[index])
                     else:
                         key = int(line[index])
@@ -104,9 +95,17 @@ def student_list(i_dict: dict) -> list:
                          "position 1) must be a dictionary whose keys match the"
                          " column headers in 'student-mat.csv' file.")
     
+    i_dict_copy = {}
+    for key in i_dict:
+        for entry in i_dict[key]:
+            if key in i_dict_copy:
+                i_dict_copy[key].append(entry.copy())
+                continue
+            i_dict_copy[key] = [entry.copy()]     
+    
     output_list = []
-    for key in i_dict:            
-        for entry in i_dict[key]:             
+    for key in i_dict_copy:            
+        for entry in i_dict_copy[key]:             
             entry[metric] = key
             output_list.append(entry)
             
