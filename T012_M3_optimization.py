@@ -93,7 +93,7 @@ def minimum(my_dict: dict, attribute: str) -> tuple:
 
 
 
-def maximum(attribute: str, i_dict: Dict[int or str, List[dict]])->tuple:
+def maximum(i_dict: Dict[int or str, List[dict]], attribute: str)->tuple:
     """Return (a, b) where a = the value of 'attribute' within the data 
     contained in student-mat.csv file which pertains to the highest average
     grade obtained within that attribute, b = the highest average grade 
@@ -101,48 +101,48 @@ def maximum(attribute: str, i_dict: Dict[int or str, List[dict]])->tuple:
     
     Preconditions: 
         1) attribute must exactly equal one of the keys in the 
-        dictionary passed as the second position argument (i_dict).
+        dictionary passed as the first position argument (i_dict).
         
         2) attribute must refer to a numeric value within nested dictionaries 
-        contained in second position argument (i_dict).
+        contained in first position argument (i_dict).
         
         3) i_dict must be a dictionary which uses the same data structure as a
         dictionary created using one of the functions defined in 
         T012_M1_load_data.py
     
-    >>> maximum('Health', ld.student_age_dictionary("student-mat.csv"))
+    >>> maximum(ld.student_age_dictionary("student-mat.csv"), 'Health')
     (1.0, 11.85)
     
-    >>> maximum('Age', ld.student_age_dictionary("student-mat.csv"))
+    >>> maximum(ld.student_age_dictionary("student-mat.csv"), 'Age')
     (16.89, 11.15)
     
-    >>> maximum('StudyTime', ld.student_school_dictionary("student-mat.csv"))
+    >>> maximum(ld.student_school_dictionary("student-mat.csv"), 'StudyTime')
     (4.0, 11.84)
     
-    >>> maximum('Failures', ld.student_health_dictionary("student-mat.csv"))
+    >>> maximum(ld.student_health_dictionary("student-mat.csv"), 'Failures')
     (0.0, 11.36)
     
-    >>> maximum('Absences', ld.student_failures_dictionary("student-mat.csv"))
+    >>> maximum(ld.student_failures_dictionary("student-mat.csv"), 'Absences')
     (0.0, 11.5)
 
     """
     if type(i_dict) != dict:
-        raise TypeError("Invalid argument. Second position argument (i_dict) "
+        raise TypeError("Invalid argument. First position argument (i_dict) "
                         "must be of type <dict>.")
     if type(attribute) != str \
        and type(attribute) != int \
        and type(attribute) != float:
-        raise TypeError("Invalid argument. First position argument (attribute) "
+        raise TypeError("Invalid argument. Second position argument (attribute) "
                         "must be of type <str> or type <int> or type <float>.")
     
     for key in i_dict:
         if type(i_dict[key]) != list:
-            raise TypeError("Invalid argument. Second position argument "
+            raise TypeError("Invalid argument. First position argument "
                             "(i_dict) must be a <dict> with values of type "
                             "<list>.")
         for entry in i_dict[key]:
             if type(entry) != dict:
-                raise TypeError("Invalid argument. Second position argument "
+                raise TypeError("Invalid argument. First position argument "
                                 "(i_dict) must be a <dict> with <list> values "
                                 "containing entries of type <dict>.")
             if not 'G_Avg' in entry:
@@ -154,13 +154,13 @@ def maximum(attribute: str, i_dict: Dict[int or str, List[dict]])->tuple:
     
     for entry in raw_data:
         if not attribute in entry:
-            raise ValueError("Invalid argument. First position argument "
+            raise ValueError("Invalid argument. Second position argument "
                              "(attribute) must be a key in nested dictionaries "
                              "of second position argument (i_dict).")        
         if type(entry[attribute]) != int and type(entry[attribute]) != float:
-            raise ValueError("Invalid Argument. First position argument "
+            raise ValueError("Invalid Argument. Second position argument "
                              "(attribute) must refer to a value within nested "
-                             "dictionaries contained in second position "
+                             "dictionaries contained in first position "
                              "argument (i_dict) of type <int> or type <float>.")
         break
     
@@ -189,14 +189,14 @@ if __name__ == "__main__":
     for attribute in attributes:
         if first_run:
             first_run = False
-            results_max['Age'] = [maximum(attribute, 
-                           ld.student_age_dictionary("student-mat.csv"))]
-            results_max['School'] = [maximum(attribute, 
-                           ld.student_school_dictionary("student-mat.csv"))]
-            results_max['Failures'] = [maximum(attribute, 
-                           ld.student_failures_dictionary("student-mat.csv"))]
-            results_max['Health'] = [maximum(attribute, 
-                           ld.student_health_dictionary("student-mat.csv"))]
+            results_max['Age'] = [maximum(
+                ld.student_age_dictionary("student-mat.csv"), attribute)]
+            results_max['School'] = [maximum(
+                ld.student_school_dictionary("student-mat.csv"), attribute)]
+            results_max['Failures'] = [maximum(
+                ld.student_failures_dictionary("student-mat.csv"), attribute)]
+            results_max['Health'] = [maximum(
+                ld.student_health_dictionary("student-mat.csv"), attribute)]
             results_min['Age'] = [minimum(
                 ld.student_age_dictionary("student-mat.csv"), attribute)]
             results_min['School'] = [minimum(
@@ -206,14 +206,14 @@ if __name__ == "__main__":
             results_min['Health'] = [minimum(
                 ld.student_health_dictionary("student-mat.csv"), attribute)]            
             continue
-        results_max['Age'].append(maximum(attribute, 
-                       ld.student_age_dictionary("student-mat.csv")))
-        results_max['School'].append(maximum(attribute, 
-                       ld.student_school_dictionary("student-mat.csv")))
-        results_max['Failures'].append(maximum(attribute, 
-                       ld.student_failures_dictionary("student-mat.csv")))
-        results_max['Health'].append(maximum(attribute, 
-                       ld.student_health_dictionary("student-mat.csv")))
+        results_max['Age'].append(maximum(
+            ld.student_age_dictionary("student-mat.csv"), attribute))
+        results_max['School'].append(maximum(
+            ld.student_school_dictionary("student-mat.csv"), attribute))
+        results_max['Failures'].append(maximum(
+            ld.student_failures_dictionary("student-mat.csv"), attribute))
+        results_max['Health'].append(maximum(
+            ld.student_health_dictionary("student-mat.csv"), attribute))
         results_min['Age'].append(minimum(
             ld.student_age_dictionary("student-mat.csv"), attribute))
         results_min['School'].append(minimum(
