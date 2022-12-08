@@ -3,38 +3,39 @@
 #    Milan Djordjevic  101262178
 
 
-import T012_M1_load_data as ld
-import T012_M2_sort_plot as sp
-import scipy.optimize as scop
+import T012_M1_load_data as ld, T012_M2_sort_plot as sp, scipy.optimize as scop
 from numpy import float64
 from typing import Dict, List
+
 
 
 def quadratic(x: float, a: float, b: float, c: float) -> float:
     """
     Return the value of a quadratic a*x^2 + b*x + c with coefficients a, b, and c, evaluated at x.
-    >>> quadratic(0, 2, -4, 5) 
+
+    >>> quadratic(0, 2, -4, 5)
     5
-    >>> quadratic(1, 1, -2, 3) 
+    >>> quadratic(1, 1, -2, 3)
     2
-    >>> quadratic(-2, 2, 4, -1) 
+    >>> quadratic(-2, 2, 4, -1)
     -1
     """
     return a * pow(x, 2) + b * x + c
 
 
-def evaluate_negate_quadratic(x: float, a: float, b: float, c: float) -> float:
+
+def evaluate_negate_quadratic(x: float, a: float, b: float, c: float)->float:
     """Return the negated value of a quadratic equation, evaluated at x, with
     coefficients a, b and c when written in standard form: ax² + bx + c = 0
-
+    
     Preconditions: a ≠ 0
-
+    
     >>> evaluate_negate_quadratic(2, 1, 2, 1)
     -9.0
-
+    
     >>> evaluate_negate_quadratic(3, 1, -6, 9)
     0.0
-
+    
     >>> evaluate_negate_quadratic(2, -1, -2, -1)
     9.0
     """
@@ -55,8 +56,9 @@ def evaluate_negate_quadratic(x: float, a: float, b: float, c: float) -> float:
                          "be zero (a ≠ 0).")
 
     return float(-(a * x ** 2 + b * x + c))
-
-
+    
+    
+    
 def minimum(my_dict: dict, attribute: str) -> tuple:
     """
     Return a tuple containing the minimum attribute and the value of G_Avg of
@@ -80,45 +82,46 @@ def minimum(my_dict: dict, attribute: str) -> tuple:
     coefs_tup = tuple(coefs)
 
     a, b, c = coefs_tup
-    # finds endpoints of domain
+    # finds enpoints of domain
     lower = sorted_list[0][attribute]
     upper = sorted_list[len(sorted_list) - 1][attribute]
 
     min_x = round(scop.fminbound(quadratic, lower, upper, args=coefs_tup), 2)
-    min_x_and_min_y = (min_x, round(quadratic(min_x, a, b, c), 2))
+    minxandminy = (min_x, round(quadratic(min_x, a, b, c), 2))
 
-    return min_x_and_min_y
+    return minxandminy
 
 
-def maximum(attribute: str, i_dict: Dict[int or str, List[dict]]) -> tuple:
+
+def maximum(attribute: str, i_dict: Dict[int or str, List[dict]])->tuple:
     """Return (a, b) where a = the value of 'attribute' within the data 
     contained in student-mat.csv file which pertains to the highest average
     grade obtained within that attribute, b = the highest average grade 
     (the grade obtained by a).
-
+    
     Preconditions: 
         1) attribute must exactly equal one of the keys in the 
         dictionary passed as the second position argument (i_dict).
-
+        
         2) attribute must refer to a numeric value within nested dictionaries 
         contained in second position argument (i_dict).
-
+        
         3) i_dict must be a dictionary which uses the same data structure as a
         dictionary created using one of the functions defined in 
         T012_M1_load_data.py
-
+    
     >>> maximum('Health', ld.student_age_dictionary("student-mat.csv"))
     (1.0, 11.85)
-
+    
     >>> maximum('Age', ld.student_age_dictionary("student-mat.csv"))
     (16.89, 11.15)
-
+    
     >>> maximum('StudyTime', ld.student_school_dictionary("student-mat.csv"))
     (4.0, 11.84)
-
+    
     >>> maximum('Failures', ld.student_health_dictionary("student-mat.csv"))
     (0.0, 11.36)
-
+    
     >>> maximum('Absences', ld.student_failures_dictionary("student-mat.csv"))
     (0.0, 11.5)
 
@@ -131,7 +134,7 @@ def maximum(attribute: str, i_dict: Dict[int or str, List[dict]]) -> tuple:
        and type(attribute) != float:
         raise TypeError("Invalid argument. First position argument (attribute) "
                         "must be of type <str> or type <int> or type <float>.")
-
+    
     for key in i_dict:
         if type(i_dict[key]) != list:
             raise TypeError("Invalid argument. Second position argument "
@@ -146,37 +149,38 @@ def maximum(attribute: str, i_dict: Dict[int or str, List[dict]]) -> tuple:
                 i_dict = ld.add_average(i_dict)
             break
         break
-
+    
     raw_data = sp.student_list(i_dict)
-
+    
     for entry in raw_data:
         if not attribute in entry:
             raise ValueError("Invalid argument. First position argument "
                              "(attribute) must be a key in nested dictionaries "
-                             "of second position argument (i_dict).")
+                             "of second position argument (i_dict).")        
         if type(entry[attribute]) != int and type(entry[attribute]) != float:
             raise ValueError("Invalid Argument. First position argument "
                              "(attribute) must refer to a value within nested "
                              "dictionaries contained in second position "
                              "argument (i_dict) of type <int> or type <float>.")
         break
-
+    
     values = set()
     for entry in raw_data:
         values.add(entry[attribute])
-
+        
     minimum, maximum = min(values), max(values)
-
+    
     coefficients = tuple(sp.curve_fit(i_dict, attribute, 2))
-
+    
     regression_max = scop.fminbound(
         evaluate_negate_quadratic, minimum, maximum, args=coefficients)
-
+    
     return (round(regression_max, 2), round(-evaluate_negate_quadratic(
         regression_max, coefficients[0], coefficients[1], coefficients[2]), 2))
 
 
-# MAIN SCRIPT
+
+#MAIN SCRIPT
 if __name__ == "__main__":
     attributes = ['Health', 'Age', 'StudyTime', 'Failures', 'Absences']
     results_max = {}
@@ -185,14 +189,14 @@ if __name__ == "__main__":
     for attribute in attributes:
         if first_run:
             first_run = False
-            results_max['Age'] = [maximum(attribute,
-                                          ld.student_age_dictionary("student-mat.csv"))]
-            results_max['School'] = [maximum(attribute,
-                                             ld.student_school_dictionary("student-mat.csv"))]
-            results_max['Failures'] = [maximum(attribute,
-                                               ld.student_failures_dictionary("student-mat.csv"))]
-            results_max['Health'] = [maximum(attribute,
-                                             ld.student_health_dictionary("student-mat.csv"))]
+            results_max['Age'] = [maximum(attribute, 
+                           ld.student_age_dictionary("student-mat.csv"))]
+            results_max['School'] = [maximum(attribute, 
+                           ld.student_school_dictionary("student-mat.csv"))]
+            results_max['Failures'] = [maximum(attribute, 
+                           ld.student_failures_dictionary("student-mat.csv"))]
+            results_max['Health'] = [maximum(attribute, 
+                           ld.student_health_dictionary("student-mat.csv"))]
             results_min['Age'] = [minimum(
                 ld.student_age_dictionary("student-mat.csv"), attribute)]
             results_min['School'] = [minimum(
@@ -200,16 +204,16 @@ if __name__ == "__main__":
             results_min['Failures'] = [minimum(
                 ld.student_failures_dictionary("student-mat.csv"), attribute)]
             results_min['Health'] = [minimum(
-                ld.student_health_dictionary("student-mat.csv"), attribute)]
+                ld.student_health_dictionary("student-mat.csv"), attribute)]            
             continue
-        results_max['Age'].append(maximum(attribute,
-                                          ld.student_age_dictionary("student-mat.csv")))
-        results_max['School'].append(maximum(attribute,
-                                             ld.student_school_dictionary("student-mat.csv")))
-        results_max['Failures'].append(maximum(attribute,
-                                               ld.student_failures_dictionary("student-mat.csv")))
-        results_max['Health'].append(maximum(attribute,
-                                             ld.student_health_dictionary("student-mat.csv")))
+        results_max['Age'].append(maximum(attribute, 
+                       ld.student_age_dictionary("student-mat.csv")))
+        results_max['School'].append(maximum(attribute, 
+                       ld.student_school_dictionary("student-mat.csv")))
+        results_max['Failures'].append(maximum(attribute, 
+                       ld.student_failures_dictionary("student-mat.csv")))
+        results_max['Health'].append(maximum(attribute, 
+                       ld.student_health_dictionary("student-mat.csv")))
         results_min['Age'].append(minimum(
             ld.student_age_dictionary("student-mat.csv"), attribute))
         results_min['School'].append(minimum(
@@ -217,5 +221,4 @@ if __name__ == "__main__":
         results_min['Failures'].append(minimum(
             ld.student_failures_dictionary("student-mat.csv"), attribute))
         results_min['Health'].append(minimum(
-            ld.student_health_dictionary("student-mat.csv"), attribute))
-
+            ld.student_health_dictionary("student-mat.csv"), attribute))        
