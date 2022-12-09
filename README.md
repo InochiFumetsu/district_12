@@ -93,8 +93,8 @@ ___
 ##### Functions by Module:
  - **T012_M1_load_data.py:**<br>
     function [*author reference (table, below)*]
-    - student_school_dictionary() [[1]](#1)
-    - student_health_dictionary() [[3]](#3)
+    - student_school_dictionary() [[3]](#3)
+    - student_health_dictionary() [[1]](#1)
     - student_age_dictionary() [[4]](#4)
     - student_failures_dictionary() [[2]](#2)
     - load_data() [[1]](#1)
