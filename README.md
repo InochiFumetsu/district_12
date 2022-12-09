@@ -44,11 +44,11 @@ ___
     - be sure to add python to the local PATH variable during installation<br><br>
   - **Must have the following python modules installed**:<br>
     (*minimum versions listed next to modules*)
-    - **numpy** (v1.23.5)
+    - **numpy** (v1.23.5)<br>
          cmd line: `pip install numpy` and hit `<ENTER>`
-    - **matplotlib** (v3.6.2)
+    - **matplotlib** (v3.6.2)<br>
          cmd line: `pip install matplotlib` and hit `<ENTER>`
-    - **scipy** (v1.9.3)
+    - **scipy** (v1.9.3)<br>
       cmd line: `pip install scipy` and hit `<ENTER>`
 
 _for general instructions on installing python modules see_:
@@ -69,7 +69,9 @@ ___
 
 ___
 
-#### Study-PY development team can be reached c/o:
+#### Contact:
+
+##### Study-PY development team can be reached c/o:
 
 |Esteban Heidrich||Project Development Lead|
 |---|---|---|
@@ -82,7 +84,7 @@ ___
 #### Credits
 
 ##### Functions by Module:
- - **T012_M1_load_data.py:**
+ - **T012_M1_load_data.py:**<br>
     function [*author reference (table, below)*]
     - student_school_dictionary() [[1]](#1)
     - student_health_dictionary() [[3]](#3)
@@ -90,30 +92,30 @@ ___
     - student_failures_dictionary() [[2]](#2)
     - load_data() [[1]](#1)
     - add_average [[4]](#4)
- - **check_equal.py:**
+ - **check_equal.py:**<br>
     function [*author reference (table, below)*]
      - check_equal() [[4]](#4)
      - check_equal_dict_keys() [[1]](#1)
      - check_no_entries_by_key() [[4]](#4)
      - type_test() [[2]](#2)
      - check_add_average() [[3]](#3)
- - **T012_M2_sort_plot.py:**
+ - **T012_M2_sort_plot.py:**<br>
     function [*author reference (table, below)*]
      - student_list() [[4]](#4)
      - sort_students_bubble() [[3]](#3)
      - sort_students_selection() [[2]](#2)
      - curve_fit() [[4]](#4)
      - histogram() [[1]](#1)
- - **T012_M3_optimization.py:**
+ - **T012_M3_optimization.py:**<br>
     function [*author reference (table, below)*]
      - quadratic() [[3]](#3)
      - evaluate_negate_quadratic() [[4]](#4)
      - minimum() [[3]](#3)
      - maximum() [[4]](#4)
- - **T012_M3_text_ui.py:**
+ - **T012_M3_text_ui.py:**<br>
     function [*author reference (table, below)*]
      - **JACK FUNCTIONS ETC. HERE**
- - **T012_M3_batch_ui.py:**
+ - **T012_M3_batch_ui.py:**<br>
     function [*author reference (table, below)*]
      - batch_ui() [[1]](#1)
 
@@ -139,7 +141,7 @@ Study-PY is free software: you can redistribute it and/or modify it under the te
 
 Study-PY is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
+You should have received a copy of the GNU General Public License along with Study-PY. If not, see <https://www.gnu.org/licenses/>.
 
 ___
 
