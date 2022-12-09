@@ -62,7 +62,11 @@ ___
 
 #### Using Study-PY:
 
-- Study-PY's batch interface and user interface include prompts and instructions to guide the user through using the program. Aslong as all instructions are followed, the program will run as intended. Ensure all instructions were followed from the Installation/Running section above before attempting to use the program. Also ensure that before use a .txt or .csv file is prepared with the first row consisting of headers and each of the corresponding columns are values of that header. Before using the batch interface prepare a .txt file where each line (ordered) is a line of commands seperated by semicolons.
+- Study-PY's batch interface and user interface include prompts and instructions to guide the user through using the program. 
+- Aslong as all instructions are followed, the program will run as intended. Ensure all instructions were followed from the Installation/Running section above before attempting to use the program. 
+- Also ensure that before use a .txt or .csv file is prepared with the first row consisting of headers and each of the corresponding columns are values of that header. Before using the batch interface prepare a .txt file where each line (ordered) is a line of command inputs, each input on each line should be separated by a semicolon (see example below).
+
+    <example>
 
 ___
 
@@ -117,7 +121,7 @@ ___
      - maximum() [[4]](#4)
  - **T012_M3_text_ui.py:**<br>
     function [*author reference (table, below)*]
-     - **JACK FUNCTIONS ETC. HERE**
+     - text_ui() [[2]](#2)
  - **T012_M3_batch_ui.py:**<br>
     function [*author reference (table, below)*]
      - batch_ui() [[1]](#1)
