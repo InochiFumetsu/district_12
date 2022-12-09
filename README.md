@@ -18,7 +18,7 @@ ___
 
 - **Study-PY only supports comma-delimited text (.txt) files or comma-separated value (.csv) files** such that the **first line of the file denotes column headers for the data contained in the columns below**
 
-- **Study-PY can be used with data files other than the "student-mat.csv"** for which it was created and will support column headers of different values than those found in the "student-mat.csv" file included with the software, however **not all features may be supported** depending on the data file used.
+- **Study-PY can be used with data files other than the "student-mat.csv"** for which it was created and will support column headers of different values than those found in the "student-mat.csv" file included with the software, however **not all features may be supported and program instability may result**, depending on the data file used.
 
 - Study-PY will never alter the original data file
 
