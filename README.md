@@ -38,6 +38,7 @@ To **download a local copy of Study-PY** for your own use:
    
    > https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
    
+       be sure to add Git to the local PATH variable during installation
    *you can download Git for Windows here:*
    
    > https://git-scm.com/download/win
@@ -66,7 +67,7 @@ To **download a local copy of Study-PY** for your own use:
 
     > https://docs.python.org/3/using/index.html
 
-    - be sure to add python to the local PATH variable during installation<br><br>
+        be sure to add python to the local PATH variable during installation
   - **Must have the following python modules installed**:<br>
     (*minimum versions listed next to modules*)
     - **numpy** (v1.23.5)<br>
