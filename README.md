@@ -8,9 +8,12 @@
 #### Study-PY
 
 - **Disclaimer:**
-  - Study-PY is a first-year engineering software development project out of Carleton University, Ottawa, Canada. This software is purpose-built and pedagogical in nature / intent. It is very limited in its functionality and reuseability and has been uploaded to GitHub solely as a means for project team members to collaborate. It is not intended for continued use or development and likely has extremely limited application, if any. This readme file was created to satisfy project requirements and was not written with the intent that it be read or employed by the general public or any party external to Carleton University. All files within this repository are subject to copyright. [(*see licensing information*)](#licensing)
+  - Study-PY is a first-year engineering software development project out of Carleton University, Ottawa, Canada. This software is purpose-built and pedagogical in nature / intent. It is very limited in its functionality and reusability and has been uploaded to GitHub solely as a means for project team members to collaborate. It is not intended for continued use or development and likely has extremely limited application, if any. This readme file was created to satisfy project requirements and was not written with the intent that it be read or employed by the general public or any party external to Carleton University. All files within this repository are subject to copyright. [(*see licensing information*)](#licensing)
 
-- Study-PY is a program capable of taking data from .txt and .csv files and performing a multitude of sorting and optimization functions to organize data into an easy to understand format. This is all done by the user through an intuitive user interface, or a batch interface used alongside a user created text file.
+___
+#### DESCRIPTION:
+
+- Study-PY is a program capable of taking data from .txt and .csv files and performing a multitude of sorting and optimization functions to organize and display data into an easy to understand format. This is all done by the user through an intuitive user interface, or a batch interface used alongside a user created text file.
 
 ___
 
@@ -43,7 +46,6 @@ ___
     *for installation instructions see*:
 
     > https://docs.python.org/3/using/index.html
-
     - be sure to add python to the local PATH variable during installation<br><br>
   - **Must have the following python modules installed**:<br>
     (*minimum versions listed next to modules*)
@@ -57,13 +59,12 @@ ___
 _for general instructions on installing python modules see_:
 
   > https://docs.python.org/3/installing/index.html
-
 ___
 
 #### Using Study-PY:
 
 - Study-PY's batch interface and user interface include prompts and instructions to guide the user through using the program. 
-- Aslong as all instructions are followed, the program will run as intended. Ensure all instructions were followed from the Installation/Running section above before attempting to use the program. 
+- As long as all instructions are followed, the program will run as intended. Ensure all instructions were followed from the Installation/Running section above before attempting to use the program. 
 - Also ensure that before use a .txt or .csv file is prepared with the first row consisting of headers and each of the corresponding columns are values of that header. Before using the batch interface prepare a .txt file where each line (ordered) is a line of command inputs, each input on each line should be separated by a semicolon (see example below).
 
     <example>
