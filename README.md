@@ -7,7 +7,7 @@
 
 #### Study-PY
 
-- text here...
+- Study-PY is a program capable of taking data from .txt and .csv files and performing a multitude of sorting, graphing, and optimization functions to organize data into an easy to understand visual format. This is all done by the user through an intuitive user interface, or a batch interface used alongside a user created text file.
 
 ___
 
@@ -59,7 +59,7 @@ ___
 
 #### Using Study-PY:
 
-- text here...
+- Study-PY's batch interface and user interface include prompts and instructions to guide the user through using the program. Aslong as all instructions are followed, the program will run as intended. Ensure all instructions were followed from the Installation/Running section above before attempting to use the program. Also ensure that before use a .txt or .csv file is prepared with the first row consisting of headers and each of the corresponding columns are values of that header. Before using the batch interface prepare a .txt file where each line (ordered) is a line of commands seperated by semicolons.
 
 ___
 
