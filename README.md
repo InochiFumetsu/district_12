@@ -69,9 +69,9 @@ ___
 
 ___
 
-#### Study-PY development team can be reached at:
+#### Study-PY development team can be reached c/o:
 
-||||
+|Esteban Heidrich||Project Development Lead|
 |---|---|---|
 |**Voice**:||(613) 520-2600 ext. 5790|
 |**WebSite**:||[Study-PY public GitHub repository](https://github.com/InochiFumetsu/district_12)|
