@@ -115,7 +115,7 @@ ___
      - **JACK FUNCTIONS ETC. HERE**
  - **T012_M3_batch_ui.py:**
     function [*author reference (table, below)*]
-     - **ESTEBAN FUNCTIONS ETC. HERE**
+     - batch_ui() [[1]](#1)
 
 ##### Authors:
 
