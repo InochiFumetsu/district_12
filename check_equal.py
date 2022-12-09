@@ -141,8 +141,8 @@ def check_no_entries_by_key(i_dict: Dict[str or int, List[dict]],
     >>>check_no_entries_by_key(student_age_dictionary("student-mat.csv"),
     "data_file_missing_entries_under_key_18.csv")
     Number of entries, by key in student_age_dictionary():      FAILED: expected 
-    {18.0: 82, 17.0: 98, 15.0: 82, 16.0: 104, 19.0: 24, 22.0: 1, 20.0: 3, 21.0: 1}, 
-    got {18: 43, 17: 98, 15: 82, 16: 104, 19: 24, 22: 1, 20: 3, 21: 1}
+    {18.0: 82, 17.0: 98, 15.0: 82, 16.0: 104, 19.0: 24, 22.0: 1, 20.0: 3, 
+    21.0: 1}, got {18: 43, 17: 98, 15: 82, 16: 104, 19: 24, 22: 1, 20: 3, 21: 1}
     False
     """
     if type(i_dict) != dict:
@@ -178,7 +178,8 @@ def check_no_entries_by_key(i_dict: Dict[str or int, List[dict]],
                 adjusted.append(str(key.strip(" \n").replace(" ", "")))
                 if adjusted[-1].isdigit():
                     if abs(int(
-                    adjusted[-1].rstrip(".")) / 10 - float(key)) > 0.0001:
+                    adjusted[-1].replace(".", "")) / 
+                           10 - float(key)) > 0.0001:
                         adjusted[-1] = float(adjusted)
                     else:
                         adjusted[-1] = int(adjusted)
@@ -201,7 +202,7 @@ def check_no_entries_by_key(i_dict: Dict[str or int, List[dict]],
             for line in file:
                 line = line.strip("\n").replace(" ", "").split(sep=",")
                 if line[index].isdigit():
-                    if abs(int(line[index].rstrip(".")) / 10 - 
+                    if abs(int(line[index].replace(".", "")) / 10 - 
                            float(line[index])) > 0.0001:
                         key = float(line[index])
                     else:
