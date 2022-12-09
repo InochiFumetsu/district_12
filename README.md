@@ -8,12 +8,9 @@
 #### Study-PY
 
 - **Disclaimer:**
-  - Study-PY is a first-year engineering software development project out of Carleton University, Ottawa, Canada. This software is purpose-built and pedagogical in nature / intent. It is very limited in its functionality and reusability and has been uploaded to GitHub solely as a means for project team members to collaborate. It is not intended for continued use or development and likely has extremely limited application, if any. This readme file was created to satisfy project requirements and was not written with the intent that it be read or employed by the general public or any party external to Carleton University. All files within this repository are subject to copyright. [(*see licensing information*)](#licensing)
+  - Study-PY is a first-year engineering software development project out of Carleton University, Ottawa, Canada. This software is purpose-built and pedagogical in nature / intent. It is very limited in its functionality and reusability and has been uploaded to GitHub solely as a means for project team members to collaborate. It is not intended for continued use or development and likely has extremely limited application, if any. This readme file was created to satisfy project requirements and was not written with the intent that it be read or employed by the general public or any party external to Carleton University. All files within this repository are subject to copyright. [(*see licensing information*)](#licensing)<br>
 
-___
-#### DESCRIPTION:
-
-- Study-PY is a program capable of taking data from .txt and .csv files and performing a multitude of sorting and optimization functions to organize and display data into an easy to understand format. This is all done by the user through an intuitive user interface, or a batch interface used alongside a user created text file.
+- Study-PY is a program capable of taking data from .txt and .csv files and performing a multitude of sorting and optimization functions to organize data into an easy to understand format. This is all done by the user through an intuitive user interface, or a batch interface used alongside a user created text file.
 
 ___
 
@@ -29,23 +26,46 @@ ___
 
 #### Installation / Running Study-PY software:
 
-- To **download a local copy of Study-PY** for your own use:
-  - go to: [Study-PY public GitHub repository](https://github.com/InochiFumetsu/district_12)
-  - on the right side of the page, look for **"releases"** and click on **"tags"**
-  - download **version 1.0.0** and extract the .zip folder contents to your desired location
-  - open a **command line** interface and navigate to the directory where you unpacked the .zip file, above
-    - in the command line, type:<br>
-    `py T012_M3_text_ui.py`<br>
-    and hit `<ENTER>`
-    - if you would like to use the **batch-ui mode**, instead of the above step, type:<br>
-    `py T012_M3_batch_ui.py` in the command line<br>
-    and hit `<ENTER>`
+To **download a local copy of Study-PY** for your own use:
+ - **Browser Method:**
+   - go to: [Study-PY public GitHub repository](https://github.com/InochiFumetsu/district_12)
+   - on the right side of the page, look for **"releases"** and click on **"tags"**
+   - download **version 1.0.0** and extract the .zip folder contents to your desired location
 
-- Study-PY is written in Python and, as such, **no "installation" is necessary**, however, please note, in order to be able to use Study-PY you:
+ - **Git Method:**
+   - first, ensure you have Git installed.<br>
+   *for instructions to install Git see:*
+   
+   > https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+   
+   *you can download Git for Windows here:*
+   
+   > https://git-scm.com/download/win
+   
+   - navigate to the directory where you would like to store the Study-PY files<br>
+   *you may do this via the command-line interface or in the Windows GUI using Git Bash*
+     - if you're in the command-line, type:<br>
+     `git clone --single-branch --branch master https://github.com/InochiFumetsu/district_12`
+     - if you're in the windows GUI
+       - **right-click** on empty space (the background) in the folder contents window
+       - select **"Git Bash Here"**
+       - type:<br> 
+    
+       `git clone --single-branch --branch master https://github.com/InochiFumetsu/district_12.git`
+   - **alternatively:** you may use either of the above methods from any directory and
+   specify the directory in which you would like to store the Study-PY files at the end of the command:
+     - Windows command-line (terminal):<br>
+     `git clone --single-branch --branch master https://github.com/InochiFumetsu/district_12 C:\<your_filepath_here>`
+     - Git Bash:<br>
+     `git clone --single-branch --branch master https://github.com/InochiFumetsu/district_12.git C:\<your_filepath_here>`
+<br><br><br>
+
+**Study-PY** is written in Python and, as such, **no "installation" is necessary**, however, please note, in order to be able to use Study-PY you:
   - **Must have the latest version of Python installed**<br>
     *for installation instructions see*:
 
     > https://docs.python.org/3/using/index.html
+
     - be sure to add python to the local PATH variable during installation<br><br>
   - **Must have the following python modules installed**:<br>
     (*minimum versions listed next to modules*)
@@ -59,12 +79,22 @@ ___
 _for general instructions on installing python modules see_:
 
   > https://docs.python.org/3/installing/index.html
+
+<br><br>
+**Running** Study-PY:
+   - open a **command line** interface and navigate to the directory where you unpacked the .zip file, above
+     - in the command line, type:<br>
+     `py T012_M3_text_ui.py`<br>
+     and hit `<ENTER>`
+     - if you would like to use the **batch-ui mode**, instead of the above step, type:<br>
+     `py T012_M3_batch_ui.py` in the command line<br>
+     and hit `<ENTER>`
 ___
 
 #### Using Study-PY:
 
-- Study-PY's batch interface and user interface include prompts and instructions to guide the user through using the program. 
-- As long as all instructions are followed, the program will run as intended. Ensure all instructions were followed from the Installation/Running section above before attempting to use the program. 
+- Study-PY's batch interface and user interface include prompts and instructions to guide the user through using the program.
+- As long as all instructions are followed, the program will run as intended. Ensure all instructions were followed from the Installation/Running section above before attempting to use the program.
 - Also ensure that before use a .txt or .csv file is prepared with the first row consisting of headers and each of the corresponding columns are values of that header. Before using the batch interface prepare a .txt file where each line (ordered) is a line of command inputs, each input on each line should be separated by a semicolon (see example below).
 
     <example>
