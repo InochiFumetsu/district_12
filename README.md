@@ -7,7 +7,10 @@
 
 #### Study-PY
 
-- Study-PY is a program capable of taking data from .txt and .csv files and performing a multitude of sorting, graphing, and optimization functions to organize data into an easy to understand visual format. This is all done by the user through an intuitive user interface, or a batch interface used alongside a user created text file.
+- **Disclaimer:**
+  - Study-PY is a first-year engineering software development project out of Carleton University, Ottawa, Canada. This software is purpose-built and pedagogical in nature / intent. It is very limited in its functionality and reuseability and has been uploaded to GitHub solely as a means for project team members to collaborate. It is not intended for continued use or development and likely has extremely limited application, if any.
+
+- Study-PY is a program capable of taking data from .txt and .csv files and performing a multitude of sorting and optimization functions to organize data into an easy to understand format. This is all done by the user through an intuitive user interface, or a batch interface used alongside a user created text file.
 
 ___
 
