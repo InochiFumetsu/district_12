@@ -1,8 +1,6 @@
 # AUTHORS:
 #    Spencer Hiscox    101230073
 #    Milan Djordjevic  101262178
-#    Jack Roberts      101261505
-#    Esteban Heidrich  101267959
 
 
 import T012_M1_load_data as ld, T012_M2_sort_plot as sp, scipy.optimize as scop
