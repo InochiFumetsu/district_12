@@ -51,6 +51,6 @@ def batch_ui():
                   command_list[1], "is", min_result)
         elif command_list[0].lower() == "b":
             max_result = T012_M3_optimization.maximum(
-                command_list[1], loaded_data)
+                loaded_data, command_list[1])
             print("Highest grade average for",
                   command_list[1], "is", max_result)
