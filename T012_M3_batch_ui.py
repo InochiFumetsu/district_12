@@ -5,7 +5,7 @@ import T012_M2_sort_plot
 import T012_M3_optimization
 def batch_ui():
     command_list = []
-    print("Please input the name of file where the commands are sotred")
+    print("Please input the name of file where the commands are stored")
     cmd_file = input()
     file_contents = open(cmd_file, 'r')
     for line in file_contents:
