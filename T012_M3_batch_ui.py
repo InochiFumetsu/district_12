@@ -1,4 +1,16 @@
-#by Esteban Heidrich SID: 101267959
+"""
+© Copyright 2022, Esteban Heidrich, Jack Roberts, Milan Djordjevic, Spencer Hiscox. All rights reserved. Study-PY™ is a trademark of district_12™ developers.
+
+Copyright © 2005-2022, NumPy Developers. All rights reserved.
+
+Copyright © 2001-2002 Enthought, Inc. 2003-2022, SciPy Developers. All rights reserved.
+
+© Copyright 2002–2012 John Hunter, Darren Dale, Eric Firing, Michael Droettboom and the Matplotlib development team; 2012–2022 The Matplotlib development team.
+
+For full licensing information, see the README.md file in the root folder of the master branch of this repository:
+https://github.com/InochiFumetsu/district_12/blob/master/README.md
+"""
+
 
 import T012_M1_load_data
 import T012_M2_sort_plot
