@@ -63,11 +63,15 @@ def student_age_dictionary(file_name: str) -> dict:
         raw_import[i] = raw_import[i].strip("\n ").split(sep=",")
 
     entries = []
+    float_values = ['StudyTime', 'G1', 'G2', 'G3']
     for i in range(len(raw_import)):
         amalgam = dict()
         for j in range(len(keys)):
             if raw_import[i][j].isdigit():
-                amalgam[keys[j]] = int(raw_import[i][j])
+                if keys[j] in float_values:
+                    amalgam[keys[j]] = float(raw_import[i][j])
+                else:
+                    amalgam[keys[j]] = int(raw_import[i][j])
             else:
                 amalgam[keys[j]] = raw_import[i][j]
         entries.append(amalgam)
