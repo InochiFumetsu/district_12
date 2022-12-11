@@ -29,7 +29,10 @@ def batch_ui():
                 loaded_data, command_list[1])
             if command_list[2] == 'Y':
                 print("Here is your sorted data")
-                print(sorted_data)
+                for i in iter(sorted_data):
+                    print(i, ":", sep="")
+                    for j in range(len(sorted_data[i])):
+                        print("\t", sorted_data[i][j], sep="")
             elif command_list[2] == 'N':
                 print("Data sorted but not shown")
             else:
