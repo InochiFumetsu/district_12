@@ -57,3 +57,4 @@ def batch_ui():
                 loaded_data, command_list[1])
             print("Highest grade average for",
                   command_list[1], "is", max_result)
+          file_contents.close()
