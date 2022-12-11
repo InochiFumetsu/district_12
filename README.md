@@ -1,4 +1,4 @@
-# **Study-PY™  Version 1.0.0  12/10/2022**
+# **Study-PY™  Version 1.0.1  12/10/2022**
 
 
 <img src="GNUGPL3.png" alt="<freeware under GNU GPL 3>" width="160"/><br>
