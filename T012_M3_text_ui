@@ -53,7 +53,7 @@ def text_ui() -> None:
 
     The interface function takes no input parameters.
 
-    Preconditions: The interface function calls many of our previous lab's files, so all files submitted alongside this one must be in the same folder for the function to run. The initial command asking if you want to load data and so forth allows uppercase or lowercase letters, but the sections where the function prompts you to enter in an attribute is case sensitive.
+    Preconditions: The interface function calls many of our previous lab's files, so all files submitted alongside this one must be in the same folder for the function to run. The initial command asking if you want to load data and so forth allows uppercase or lowercase letters, but the sections where the function prompts you to enter in an attribute is case sensitive. The file name the user enters in the "Load Data" prompt must be a real file, and must be in the same folder as this text_ui program.
     """
     supported_cmds = ["L", "S", "H", "W", "B", "Q", "School", "Age",
                       "StudyTime", "Failures", "Health", "Absences", "G1", "G2", "G3", "G_Avg", "Yes", "No"]  # Create the list of supported commands for throughout the lab
