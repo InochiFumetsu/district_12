@@ -50,6 +50,8 @@ ECOR1042_Lab1B_Course_Project
 
 
 
+# COMPLETED:
+
 # Lab 3 “LOAD DATA MODULE” <Text Processing / Dicts / Lists>
     •	Read .csv file into data structure
     •	“Text Processing”? -> create a dictionary and fill it with student data
@@ -60,7 +62,7 @@ ECOR1042_Lab1B_Course_Project
        o	Failures
     •	Calculate each student’s average grade
        o	Append it into the dict
-   
+       
 # Lab 4 <Unit testing / sets>
     •	Unit testing:
        o	Perform a bunch of tests to ensure previously build (load data) module works “perfectly”
@@ -87,3 +89,4 @@ ECOR1042_Lab1B_Course_Project
        1.	Take inputs directly from the terminal to execute commands
        2.	Second will read a string of commands from a text file (“batch interface”)
     •	Create “ReadMe” file & “wrap up” whatever that means.
+   
