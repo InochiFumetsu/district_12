@@ -96,9 +96,14 @@ ___
 
 - Study-PY's batch interface and user interface include prompts and instructions to guide the user through using the program.
 - As long as all instructions are followed, the program will run as intended. Ensure all instructions were followed from the Installation/Running section above before attempting to use the program.
-- Also ensure that before use a .txt or .csv file is prepared with the first row consisting of headers and each of the corresponding columns are values of that header. Before using the batch interface prepare a .txt file where each line (ordered) is a line of command inputs, each input on each line should be separated by a semicolon (see example below).
+- Also ensure that before use a .txt or .csv file is prepared with the first row consisting of headers and each of the corresponding columns are values of that header.
+- Before using the batch interface prepare a .txt file where each line (ordered) is a line of command inputs, each input on each line should be separated by a semicolon (see example below).
 
-    <example>
+    L;student-mat.csv;School  # This line loads student-mat.csv as a file and imports the School dictionary.
+    s;Age;N  # This line sorts the dictionary stored from above by the students' Age (increasing), and then does not display the data.
+    H;Failures  # This line tells the program to make a histogram from the dictionary stored in the first line, and have the key of the histrogram be Failures.
+    w;Health  # This line tells the program to calculate the student health level that is worst in terms of average grade.
+    b;Health  # This line tells the program to calculate the student health level that is best in terms of average grade.
 
 ___
 
