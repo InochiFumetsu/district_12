@@ -35,14 +35,14 @@ To **download a local copy of Study-PY** for your own use:
  - **Git Method:**
    - first, ensure you have Git installed.<br>
    *for instructions to install Git see:*
-   
+
    > https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
-   
+
        be sure to add Git to the local PATH variable during installation
    *you can download Git for Windows here:*
-   
+
    > https://git-scm.com/download/win
-   
+
    - navigate to the directory where you would like to store the Study-PY files<br>
    *you may do this via the command-line interface or in the Windows GUI using Git Bash*
      - if you're in the command-line, type:<br>
@@ -50,8 +50,8 @@ To **download a local copy of Study-PY** for your own use:
      - if you're in the windows GUI
        - **right-click** on empty space (the background) in the folder contents window
        - select **"Git Bash Here"**
-       - type:<br> 
-    
+       - type:<br>
+
        `git clone --single-branch --branch master https://github.com/InochiFumetsu/district_12.git`
    - **alternatively:** you may use either of the above methods from any directory and
    specify the directory in which you would like to store the Study-PY files at the end of the command:
@@ -177,7 +177,7 @@ ___
 #### <a name="licensing">Licensing and Copyright</a>
 
 ##### Study-PY
-© Copyright 2022, Esteban Heidrich, Jack Roberts, Milan Djordjevic, Spencer Hiscox. All rights reserved.
+Copyright © 2022, Esteban Heidrich, Jack Roberts, Milan Djordjevic, Spencer Hiscox. All rights reserved.
 Study-PY™ is a trademark of district_12™ developers.
 <br><br>
 
@@ -262,7 +262,7 @@ ___
 
 ##### Matplotlib
 
-© Copyright 2002–2012 John Hunter, Darren Dale, Eric Firing, Michael Droettboom and the Matplotlib development team; 2012–2022 The Matplotlib development team.
+Copyright © 2002–2012 John Hunter, Darren Dale, Eric Firing, Michael Droettboom and the Matplotlib development team; 2012–2022 The Matplotlib development team.
 <br><br>
 
 ###### License agreement for matplotlib versions 1.3.0 and later
