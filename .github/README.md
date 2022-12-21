@@ -178,7 +178,7 @@ ___
 ##### Study-PY
 Copyright © 2022, Esteban Heidrich, Jack Roberts, Milan Djordjevic, Spencer Hiscox. All rights reserved.
 Study-PY™ is a trademark of district_12™ developers.
-<br>
+<br><br>
 Carleton University disclaims any copyright in work created by students in the course of their studies.
 <br><br>
 
