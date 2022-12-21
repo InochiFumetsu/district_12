@@ -119,7 +119,6 @@ ___
 
 |Esteban Heidrich||Project Development Lead|
 |---|---|---|
-|**Voice**:||(613) 520-2600 ext. 5790|
 |**WebSite**:||[Study-PY public GitHub repository](https://github.com/InochiFumetsu/district_12)|
 |**Email**:||<117683649+Hey1121@users.noreply.github.com>|
 
@@ -179,6 +178,8 @@ ___
 ##### Study-PY
 Copyright © 2022, Esteban Heidrich, Jack Roberts, Milan Djordjevic, Spencer Hiscox. All rights reserved.
 Study-PY™ is a trademark of district_12™ developers.
+<br>
+Carleton University disclaims any copyright in work created by students in the course of their studies.
 <br><br>
 
 Study-PY is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
